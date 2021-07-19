@@ -211,6 +211,12 @@ a {
   color: #f4623a;
   text-decoration: underline;
 }
+
+.github{
+  color: #6c757d;
+  text-decoration: underline;
+}
+
 a:hover {
   color: #c34e2e;
 }
@@ -4256,67 +4262,7 @@ textarea.form-control-lg {
   color: #fff;
 }
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 2px solid #f4623a;
-  border-radius: 0.25rem;
-}
-.product-card {
-    position: relative;
-    width: 65%;
-    margin-bottom: 3.5rem;
-    margin-top: 3rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-.product-card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-.card-title{
-    text-align: center;
-    font-family: "Helvetica Neue";
-    color: #f4623a;
 
-}
-.card-score {
-    position: absolute;
-    top: -1.5rem;
-    left: 92%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    padding-top: 0.1rem;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: white;
-
-}
-.card-score-color-a {
-    background: #038141;
-}
-.card-score-color-b {
-  background: #85BB2F;
-}
-
-.card-score-color-c {
-  background: #FECB02;
-}
-
-.card-score-color-d {
-  background: #E77D00;
-}
-
-.card-score-color-e {
-  background: #E63E11;
-}
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -10901,7 +10847,7 @@ body {
 }
 
 .page-section {
-  padding: 8rem 0;
+  padding: 2rem 0;
 }
 
 .text-white-75 {
@@ -11091,3 +11037,7 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+i.fas,
+    i.fab {
+      border: 1px solid red;
+    }
