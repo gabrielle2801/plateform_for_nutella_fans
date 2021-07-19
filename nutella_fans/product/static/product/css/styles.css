@@ -203,7 +203,10 @@ select:disabled {
 [list]::-webkit-calendar-picker-indicator {
   display: none;
 }
-
+a {
+  color: #f4623a;
+  text-decoration: underline;
+}
 button,
 [type=button],
 [type=reset],
