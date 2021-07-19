@@ -1,0 +1,4 @@
+Django==3.2
+psycopg2-binary
+requests==2.25.1
+IPython ==  7.8.0
