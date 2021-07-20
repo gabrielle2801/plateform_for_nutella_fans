@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'nutella_fans.base.apps.BaseConfig',
     'nutella_fans.product.apps.ProductConfig',
     'nutella_fans.save_substitute.apps.SaveSubstituteConfig',
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'nutella_fans.urls'
@@ -146,3 +148,8 @@ AUTH_USER_MODEL = 'users_account.User'
 LOGIN_REDIRECT_URL = 'base'
 LOGOUT_REDIRECT_URL = 'base'
 LOGIN_URL = 'login'
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

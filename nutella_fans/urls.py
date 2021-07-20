@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from django.views.generic.base import TemplateView
-# from users_account import views
+import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='base.html'), name='base'),
     path('account/', include('django.contrib.auth.urls')),
     path('', include('nutella_fans.product.urls')),
-    path('', include('nutella_fans.users_account.urls'))
+    path('', include('nutella_fans.users_account.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]

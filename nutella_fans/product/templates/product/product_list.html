@@ -67,7 +67,7 @@
                     <div class="card product-card d-flex flex-column ">
                         <img src="{{product.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{product.name}}</p>
-                            <a class="btn btn-primary mt-auto  role="button">Trouver un substitut</a>
+                            <a class="btn btn-primary mt-auto"  role="button" href="{{product.id}}">Trouver un substitut</a>
                         <div class="card-score card-score-color-{{ product.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{product.nutriscore}}
                         </div>

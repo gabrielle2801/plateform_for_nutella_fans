@@ -15,3 +15,11 @@ class ProductListView(ListView):
             return qs.filter(name__icontains=search)
         else:
             return qs
+
+
+class SubtititeListView(ListView):
+    template_name = 'substitute.html'
+    model = Product
+
+    def get_queryset(self, id):
+        pass
