@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from nutella_fans.product.models import Product
 
@@ -18,18 +18,30 @@ class ProductListView(ListView):
 
 
 class SubstituteListView(ListView):
-    template_name = 'substitute_list.html'
+    template_name = 'product/substitute_list.html'
+    model = Product
+    context_object_name = 'product_list'
+
+    def get_queryset(self, *args, **kwargs):
+        product_id = self.kwargs.get('product_id')
+        product = Product.objects.get(pk=product_id)
+        product_categories = product.categories.all()
+        result = Product.objects.filter(categories__in=product_categories)\
+            .filter(nutriscore__lt=product.nutriscore)\
+            .order_by('nutriscore').distinct()
+        return result
+
+
+class ProductDetailView(DetailView):
+    template_name = 'product/detail_substitute.html'
     model = Product
 
-    def get_queryset(self, barcode):
-        search_substitute = self.request.GET.get('search_substitute')
-        qs = super().get_queryset()
-        if search_substitute:
-            product = Product.objects.get(barcode=barcode)
-            product_categories = product.categories.all()
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
 
-            return Product.objects.filter(categories__in=product_categories)\
-                .filter(nutriscore__lt=product.nutriscore)\
-                .order_by('nutriscore').distinct()
-        else:
-            return qs
+        substitute_id = self.kwargs.get('substitute_id')
+        queryset = queryset.filter(pk=substitute_id)
+        obj = queryset.get()
+        # product_categories = product.categories.all()
+        return obj

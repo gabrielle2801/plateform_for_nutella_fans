@@ -23,13 +23,37 @@ class Store(models.Model):
 
 
 class Product(models.Model):
+    """LOW_LEVEL = 'LO'
+    MODERATE_LEVEL = 'MO'
+    HIGH_LEVEL = 'HI'
+
+    NUTRIENT_LEVEL = [
+        (LOW_LEVEL, 'en faible quantité'),
+        (MODERATE_LEVEL, 'en quantité modérée'),
+        (HIGH_LEVEL, 'en quantité élévé')
+    ]
+    fat_level = models.CharField(
+        max_length=2, choices=NUTRIENT_LEVEL, default=None, null=True)
+    """
     name = models.CharField(max_length=200)
     nutriscore = models.CharField(max_length=1, null=True)
     nova = models.IntegerField(null=True)
     url = models.URLField(max_length=200)
-    barcode = models.CharField(max_length=200)
+    barcode = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     picture = models.URLField(null=True)
+    fat_100g = models.FloatField(null=True)
+    fat_level = models.CharField(
+        max_length=50, null=True)
+    salt_100g = models.FloatField(null=True)
+    salt_level = models.CharField(
+        max_length=50, null=True)
+    saturated_fat_100g = models.FloatField(null=True)
+    saturated_fat_level = models.CharField(
+        max_length=50, null=True)
+    sugars_100g = models.FloatField(null=True)
+    sugars_level = models.CharField(
+        max_length=50, null=True)
     brand = models.ForeignKey(
         Brand, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
