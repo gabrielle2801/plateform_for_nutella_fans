@@ -10938,7 +10938,6 @@ section.head {
     background-size: cover;
 }
 
-
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
@@ -11008,7 +11007,19 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
-i.fas,
-    i.fab {
-      border: 1px solid red;
-    }
+.fa-carrot {
+      color: white;
+      font-size: 1.5rem !important;
+}
+
+.bi-person-circle {
+  font-size: 1.5rem !important;
+}
+.fa-sign-out-alt {
+  color: white;
+  font-size: 1.5rem !important;
+}
+.fa-user{
+  color: white;
+  font-size: 1.5rem !important;
+}

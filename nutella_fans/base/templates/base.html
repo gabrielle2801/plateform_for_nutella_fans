@@ -19,6 +19,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -36,13 +37,18 @@
                                 <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
                             </form>
                             {% if user.is_authenticated %}
-                            <div>
-                                <a href="{% url 'logout' %}">Logout</a>
+
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user"></i></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">
+                                <i class="fas fa-carrot"></i></a></li>
+
+                                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                                </li>
                             {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user"></i></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}"><i class="fas fa-carrot"></i></a></li>
                             {% endif %}
-                            </div>
+
                         </ul>
                     </div>
                 </div>
@@ -172,5 +178,6 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://kit.fontawesome.com/78aa674535.js" crossorigin="anonymous"></script>
     </body>
 </html>
