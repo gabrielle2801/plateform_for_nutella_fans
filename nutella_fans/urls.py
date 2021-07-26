@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('nutella_fans.product.urls')),
     path('', include('nutella_fans.users_account.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
+    path('', include('nutella_fans.save_substitute.urls')),
 ]

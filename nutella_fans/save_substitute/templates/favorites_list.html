@@ -1,0 +1,24 @@
+{% extends 'product/product_list.html' %}
+{% block content%}
+<section class="main-section">
+    <div class="row">
+        {% if object_list  %}
+            {% for favorite in product_list %}
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-center">
+                    <div class="card product-card d-flex flex-column ">
+                        <img src="{{substitute.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
+                        <p class="card-title">{{substitute.name}}</p>
+                            <a  name="detail_substitute"   href="{% url 'detail_substitute' substitute_id=substitute.id %}" value='{{request.GET.search_substitute}}'>
+                            </a>
+                        <div class="card-score card-score-color-{{ substitute.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{substitute.nutriscore}}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text_danger">Vous n'avez pas encore de produits favoris ... </p>
+        {% endif %}
+    </div>
+</section>
+{% endblock%}

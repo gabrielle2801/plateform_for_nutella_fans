@@ -24,6 +24,7 @@ class SubstituteListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         product_id = self.kwargs.get('product_id')
+        print(product_id)
         product = Product.objects.get(pk=product_id)
         product_categories = product.categories.all()
         result = Product.objects.filter(categories__in=product_categories)\

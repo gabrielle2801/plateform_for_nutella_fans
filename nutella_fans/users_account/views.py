@@ -28,8 +28,6 @@ class SignupView(View):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        # import ipdb
-        # ipdb.set_trace()
         form = self.form_class(data=request.POST)
         if form.is_valid():
             form.save()
