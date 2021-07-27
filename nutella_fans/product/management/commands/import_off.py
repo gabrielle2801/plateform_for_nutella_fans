@@ -42,7 +42,6 @@ class Command(BaseCommand):
         categories = [data.get('name') for data in data_category
                       if data.get("name")]
         category_name = categories[0:5]
-        print(category_name)
         return category_name
 
     def get_products(self, category):

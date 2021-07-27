@@ -7,5 +7,3 @@ class FavoriteCreateForm(forms.ModelForm):
     class Meta:
         model = Substitute
         fields = ['product', 'substitute']
-        widgets = {'product': forms.HiddenInput(
-        ), 'substitute': forms.HiddenInput()}

@@ -23,18 +23,7 @@ class Store(models.Model):
 
 
 class Product(models.Model):
-    """LOW_LEVEL = 'LO'
-    MODERATE_LEVEL = 'MO'
-    HIGH_LEVEL = 'HI'
 
-    NUTRIENT_LEVEL = [
-        (LOW_LEVEL, 'en faible quantité'),
-        (MODERATE_LEVEL, 'en quantité modérée'),
-        (HIGH_LEVEL, 'en quantité élévé')
-    ]
-    fat_level = models.CharField(
-        max_length=2, choices=NUTRIENT_LEVEL, default=None, null=True)
-    """
     name = models.CharField(max_length=200)
     nutriscore = models.CharField(max_length=1, null=True)
     nova = models.IntegerField(null=True)

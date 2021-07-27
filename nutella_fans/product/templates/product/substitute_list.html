@@ -3,7 +3,7 @@
 {% block content%}
 <section class="main-section">
     <div class="row">
-        {% if object_list  %}
+        {% if product_list  %}
             {% for substitute in product_list %}
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-center">
                     <div class="card product-card d-flex flex-column ">
@@ -13,12 +13,10 @@
                             <i class="bi bi-info-circle"></i>
                         </a>
                          {% if user.is_authenticated %}
-                         <form class="substitute_saved" method="post" action="{% url 'favorites_list' %}">
+                         <form  method="post" action="{% url 'substitute_list' %}">
                          {% csrf_token %}
-                         <input type="hidden" name="product_id" value="{{ product.id }}">
-                         <input type="hidden" name="substitute_product_id" value="{{ substitute.id }}">
-                         <p>{{substitute.id}}</p>
-                         <p>{{product.id}}</p>
+                         <input type="hidden" name="product_id" value="{{ product_id }}">
+                         <input type="hidden" name="substitute_id" value="{{ substitute.id }}">
                          <button type="submit" class="d-flex justify-content-center align-items-center btn btn-link btn-choice"
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="Enregistrer ce substitut dans vos favoris">
                             <i class="bi bi-heart"></i>

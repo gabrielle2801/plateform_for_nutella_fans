@@ -22,9 +22,13 @@ class SubstituteListView(ListView):
     model = Product
     context_object_name = 'product_list'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['product_id'] = self.kwargs.get('product_id')
+        return context
+
     def get_queryset(self, *args, **kwargs):
         product_id = self.kwargs.get('product_id')
-        print(product_id)
         product = Product.objects.get(pk=product_id)
         product_categories = product.categories.all()
         result = Product.objects.filter(categories__in=product_categories)\
