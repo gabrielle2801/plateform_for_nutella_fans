@@ -38,15 +38,12 @@
                         <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
                     </form>
                     {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.id %}"><i class="fas fa-user"></i></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'favorites_list' %}">
-                        <i class="fas fa-carrot"></i></a></li>
-                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
-                        {% endif %}
+                    <div>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
+                    {% endif %}
                     </div>
                 </ul>
             </div>
@@ -58,30 +55,47 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5  justify-content-center align-items-between text-center">
             <div class="col">
-                <h1 class="fs-1 text-center text-white">Création de votre compte Pur Beurre</h1>
+                <h1 class="fs-1 text-center text-white">Mentions légales</h1>
             </div>
         </div>
     </div>
 </header>
 {% endblock%}
 {% block content%}
-<main class="container main-registration">
+<main class="container mentions-legales">
   <section class="intro-section">
-    <div class="main-instructions">
-      <p class="font-weight-bold text-body">Inscrivez-vous au site Pur Beurre pour enregistrer vos favoris</p>
-    </div>
-  </section>
-  <section class="registration-main-section">
-        <form method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button class="btn btn-primary account-btn" >Créer mon compte</button>
-        </form>
-        <div class="further-instructions">
-          <p class="text-body">Vous avez déja un compte ?</p>
-          <a class="text-body fw-bold text-decoration-underline" href="{% url 'login' %}">Connectez-vous!</a>
+        <div class="main-instructions">
+        <p class="font-weight-bold text-body">Mentions légales en vigueur au 01/08/21</p>
         </div>
-  </section>
+    </section>
+    <section class="registration-main-section">
+        <h5 class="mention-titre">Conditions d'utilisation</h5>
+        <p class="mention">L’utilisation du présent site implique l’acceptation pleine et entière des conditions générales d’utilisation décrites ci-après. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment.</p>
+    </section>
+    <section class="registration-main-section">
+        <h5 class="mention-titre">Informations</h5>
+        <p class="mention">Les informations et documents du site sont présentés à titre indicatif, n’ont pas de caractère exhaustif, et ne peuvent engager la responsabilité du propriétaire du site.
+            Le propriétaire du site ne peut être tenu responsable des dommages directs et indirects consécutifs à l’accès au site.</p>
+    </section>
+    <section>
+        <h5 class="mention-titre">Propriété intellectuelle</h5>
+        <p class="mention">Sauf mention contraire, tous les éléments accessibles sur le site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) restent la propriété exclusive de leurs auteurs, en ce qui concerne les droits de propriété intellectuelle ou les droits d’usage. 1
+        Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l’auteur.23
+        Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient est considérée comme constitutive d’une contrefaçon et poursuivie. 4
+        Les marques et logos reproduits sur le site sont déposés par les sociétés qui en sont propriétaires.
+        </p>
+    </section>
+    <section>
+        <h5 class="mention-titre">Hébergeur</h5>
+        <p class="mention"> Société Heroku, dont le siège social est situé au Salesforce Tower 415 Mission Street, 3rd Floor San Francisco, CA 94105.</p>
+    </section>
+    <section>
+        <h5 class="mention-titre">Crédits</h5>
+        <p class="mention">Thème utlisé : <a href="https://startbootstrap.com/theme/creative">Creative</a></p>
+        <p class="mention">Photo de fond par <a href="https://unsplash.com/@olenka_kotyk">Olenka Kotyk</a> sur <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">UnsPlash</a></p>
+        <p class="mention">Les illustrations de Colette et de Rémy sont les personnages du dessin d'animation Ratatouille et sont la propiété de la Walt Disney Company©</p>
+        <p class="mention">Toutes les photos proviennent de l'opensource <a href="https://fr.openfoodfacts.org/">Open Food Fact</a></p>
+    </section>
 </main>
 {% endblock%}
 <!-- Footer-->
@@ -90,10 +104,10 @@
             <div class="container px-4 px-lg-5">
                  <div class="row ">
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <a class="col-lg-8 col-xl-6" href="{% url 'legal_notice' %}">Mentions Légales</a>
+                        <a class="col-lg-8 col-xl-6" href="">Mentions Légales</a>
                     </div>
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <a class="col-lg-8 col-xl-6"  href="mailto:contact@purbeurre.com">Contact</a>
+                        <a class="col-lg-8 col-xl-6" href="">Contact</a>
                     </div>
                     <div class="container px-4 px-lg-5">
                         <div class="small text-center text-muted">Copyright &copy; 2021 - Pur Beurre</div>

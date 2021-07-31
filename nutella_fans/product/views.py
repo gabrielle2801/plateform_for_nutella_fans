@@ -1,4 +1,6 @@
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 
 from nutella_fans.product.models import Product
 
@@ -22,9 +24,15 @@ class SubstituteListView(ListView):
     model = Product
     context_object_name = 'product_list'
 
+    def get_object(self):
+        product = Product.objects.get(pk=self.kwargs.get('product_id'))
+        return product
+
     def get_context_data(self):
         context = super().get_context_data()
+        product = self.get_object()
         context['product_id'] = self.kwargs.get('product_id')
+        context['product'] = product
         return context
 
     def get_queryset(self, *args, **kwargs):

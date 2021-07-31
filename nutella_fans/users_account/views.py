@@ -1,22 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic import DetailView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
 from django.contrib.auth.views import LoginView
+# from django.shortcuts import get_object_or_404
 
 from nutella_fans.users_account.forms import UserCreationForm
-
-
-def base(request):
-    return render(request, 'base.html')
-
-
-class BaseView(View):
-    template_name = "templates/base.html"
-
-
-def home(request):
-    return render(request, 'home.html')
+from nutella_fans.users_account.models import User
 
 
 class SignupView(View):
@@ -48,3 +39,24 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect('base')
+
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'registration/profile.html'
+    # context_object_name = 'users'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        user_id = self.request.user.id
+        print(user_id)
+        queryset = queryset.filter(pk=user_id)
+        obj = queryset.get()
+        # product_categories = product.categories.all()
+        return obj

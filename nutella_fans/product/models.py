@@ -29,7 +29,7 @@ class Product(models.Model):
     nova = models.IntegerField(null=True)
     url = models.URLField(max_length=200)
     barcode = models.CharField(max_length=200, unique=True)
-    description = models.TextField()
+    description = models.TextField(null=True)
     picture = models.URLField(null=True)
     fat_100g = models.FloatField(null=True)
     fat_level = models.CharField(

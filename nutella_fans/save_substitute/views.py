@@ -1,8 +1,11 @@
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
+from django.contrib import messages
+
 
 from nutella_fans.save_substitute.models import Substitute, Product
 from nutella_fans.users_account.models import User
@@ -11,7 +14,6 @@ from nutella_fans.users_account.models import User
 class FavorateListView(ListView):
     template_name = 'favorites_list.html'
     model = Substitute
-    context_object_name = 'favorite_list'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -46,4 +48,16 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
                                                    substitute_id=self.request.POST.get('substitute_id'))
 
             user.substitutes.add(substitute)
-        return render(request, 'favorites_list.html')
+
+        return redirect('favorites_list')
+
+
+class FavoriteDeleteView(DeleteView):
+    model = Substitute
+    success_url = reverse_lazy('favorites_list')
+
+    def get(self, request, *args, **kwargs):
+        substitute_id = self.kwargs.get('fav.id')
+        delete = self.post(request, Substitute.objects.filter(substitute_id=substitute_id).delete())
+        messages.success(request, 'Le substitut a bien été supprimer')
+        return delete

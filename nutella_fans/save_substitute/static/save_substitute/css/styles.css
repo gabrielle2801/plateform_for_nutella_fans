@@ -1,0 +1,79 @@
+.favoris {
+    background-color:#f4623a !important ;
+    position: relative;
+    bottom: 0;
+}
+
+.bi-info-circle{
+  font-size: 1.5rem !important;
+
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+.card-footer .btn, .btn-detail ,.btn-delete {
+    width: 2.5rem !important;
+    height: 2.5rem ! important;
+    margin: 0 0.5rem 0 0;
+    color: white;
+    background-color: salmon !important;
+    border-radius: 0.5rem !important;
+}
+.btn:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+a:hover .icon-favoris ,a:focus .icon-favoris{
+     background:rgba(0,0,0,.4);
+     box-shadow:0 1px 0 rgba(255,255,255,.4);
+
+
+}
+a span{
+     position:absolute;
+     margin-top:150px;
+     margin-left:-35px;
+     color:#f9fafb;
+     background:#dc3545;
+     padding:15px;
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+}
+a:hover span, a:focus span{
+     transform:scale(1) rotate(0);
+
+}
+.fa-product-hunt {
+    font-size: 1.5rem !important;
+}
+.fa-shopping-bag:before {
+    font-size: 30rem !important;
+    color: #dc3545;
+    opacity: 0.7;
+}
+.product-img{
+    height: 150px !important;
+    width: 100% !important;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+.messages{
+    color: #508d8a;
+    background-color: #e7fbfa;
+    border-color: #dbf9f8;
+}

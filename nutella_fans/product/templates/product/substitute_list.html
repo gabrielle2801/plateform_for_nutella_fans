@@ -1,19 +1,51 @@
 {% extends 'product/product_list.html' %}
-{% load static %}
+
+{% block header %}
+<header class="masthead-search">
+    <div class="container px-4 px-lg-5 h-100">
+
+    </div>
+</header>
+{% endblock%}
 {% block content%}
 <section class="main-section">
     <div class="row">
+         <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-center">
+                <div class="card-search product-card d-flex flex-column ">
+                    <div class="card-score card-score-color-{{ product.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{product.nutriscore}}
+                        </div>
+                        <img src="{{product.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
+                        <p class="card-title">{{product.name}}</p>
+                        <div class="card-footer d-flex product align-content-around mt-auto">
+                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button"   href="{% url 'detail_substitute' product.id %}">
+                            <i class="bi bi-info-circle"></i>
+                            </a>
+                            <p class="card-title product-title">Produit recherche</p>
+                </div>
+        </div>
+    </div>
+    <div class="row">
         {% if product_list  %}
+        <div class="col-lg-8 col-md-6 col-sm-12 d-flex align-items-center justify-content-center text-center">
+            <h3 class="text_center">Vous pouvez remplacer cet aliment par :</h3>
+        </div>
+    </div>
+    <div class="row">
             {% for substitute in product_list %}
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-center">
                     <div class="card product-card d-flex flex-column ">
+                        <div class="card-score card-score-color-{{ substitute.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{substitute.nutriscore}}
+                        </div>
                         <img src="{{substitute.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{substitute.name}}</p>
-                        <a  name="detail_substitute"   href="{% url 'detail_substitute' substitute_id=substitute.id %}" value='{{request.GET.search_substitute}}'>
+                        <div class="card-footer d-flex favoris align-content-around mt-auto">
+                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button"   href="{% url 'detail_substitute' substitute_id=substitute.id %}">
                             <i class="bi bi-info-circle"></i>
-                        </a>
+                            </a>
                          {% if user.is_authenticated %}
-                         <form  method="post" action="{% url 'substitute_list' %}">
+                         <form  method="post" action="{% url 'substitute_save' %}">
                          {% csrf_token %}
                          <input type="hidden" name="product_id" value="{{ product_id }}">
                          <input type="hidden" name="substitute_id" value="{{ substitute.id }}">
@@ -23,14 +55,16 @@
                             </button>
                          </form>
                          {% endif %}
-                        <div class="card-score card-score-color-{{ substitute.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{substitute.nutriscore}}
-                        </div>
+                         </div>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-            <p class="text_danger">Il n'y a pas de substitut ici</p>
+            <div class="row justify-content-center h-100">
+               <div class="col-lg-8 col-md-6 col-sm-12 d-flex text-center">
+                    <h3 class="text-center no-favoris">Nous n'avons pas trouver de meilleur produit désolée !</h3>
+                </div>
+            </div>
         {% endif %}
     </div>
 </section>

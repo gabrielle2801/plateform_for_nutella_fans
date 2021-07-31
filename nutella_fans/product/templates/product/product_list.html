@@ -19,36 +19,40 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link type="text/css" href="{% static 'product/css/styles.css' %}" rel="stylesheet" />
+        <link type="text/css" href="{% static 'save_substitute/css/styles.css' %}" rel="stylesheet" />
          <link type="text/css" href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
 
 </head>
  <body id="page-top">
 {% block nav %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <div class="img-fluid">
-                <img  src="../static/assets/img/logo_pur_beurre.png"  height="30" width="30">
-            </div>
-            <a class="navbar-brand" href="{% url 'base' %}">Pur Beurre</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <form  method="get" action="{% url 'product_list' %}">
-                        <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
-                    </form>
-                    {% if user.is_authenticated %}
-                    <div>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
-                    {% endif %}
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+                <div class="container px-4 px-lg-5">
+                    <div class="img-fluid">
+                        <img  src="../static/assets/img/logo_pur_beurre.png"  height="30" width="30">
                     </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock nav %}
+                    <a class="navbar-brand" href="{% url 'base' %}">Pur Beurre</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                            <form  method="get" action="{% url 'product_list' %}">
+                                <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
+                            </form>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href=""><i class="fas fa-user"></i></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'favorites_list' %}">
+                                <i class="fas fa-carrot"></i></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                                </li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endblock nav %}
 {% block header %}
 <header class="masthead-search">
     <div class="container px-4 px-lg-5 h-100">
@@ -77,21 +81,32 @@
                 </div>
             {% endfor %}
         {% else %}
-            <p class="text_danger">Il n'y a pas de produit ici</p>
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+               <div class="col-lg-4 col-md-6 col-sm-12 d-flex text-center">
+                    <h2 class="text-center no-favoris">Le produit n'existe pas  !</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center h-100">
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                        <i class="fas fa-shopping-bag"></i>
+                </div>
+            </div>
+        </div>
         {% endif %}
     </div>
 </section>
 {% endblock%}
  <!-- Footer-->
      {% block footer %}
-        <footer class="bg-light py-5">
+        <footer class="bg-light py-3 detail-product">
             <div class="container px-4 px-lg-5">
                  <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <a class="col-lg-8 col-xl-6" href="">Mentions Légales</a>
+                        <a class="col-lg-8 col-xl-6" href="{% url 'legal_notice' %}">Mentions Légales</a>
                     </div>
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <a class="col-lg-8 col-xl-6" href="">Contact</a>
+                        <a class="col-lg-8 col-xl-6" href="mailto:contact@purbeurre.com">Contact</a>
                     </div>
                     <div class="container px-4 px-lg-5">
                         <div class="small text-center text-muted">Copyright &copy; 2021 - Pur Beurre</div>
@@ -106,10 +121,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
     <!-- Core theme JS-->
     <script src="{% static 'js/scripts.js'%}"></script>
+
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+     <script src="https://kit.fontawesome.com/78aa674535.js" crossorigin="anonymous"></script>
     </body>
 </html>

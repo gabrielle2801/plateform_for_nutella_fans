@@ -59,7 +59,7 @@ class Command(BaseCommand):
             "tag_contains_0": "contains",
             "tag_0": category,
             "sort_by": "unique_scans_n",
-            "page_size": 150,
+            "page_size": 200,
             "json": 1}
         response_product = requests.get(
             "https://fr.openfoodfacts.org/cgi/search.pl?", query)
@@ -67,34 +67,35 @@ class Command(BaseCommand):
         return result_product["products"]
 
     def create_product(self, product):
-        name = product.get("product_name")
-        nutriscore = product.get("nutrition_grades")
-        nova = product.get("nova_group")
-        url = product.get("url")
-        description = product.get("ingredients_text")
-        barcode = product.get("code")
-        picture = product.get("image_front_url")
-        try:
-            fat_100g = product.get("nutriments", {}).get("fat_100g")
-            fat_level = product.get("nutrient_levels", {}).get("fat")
-            salt_100g = product.get("nutriments", {}).get("salt_100g")
-            salt_level = product.get("nutrient_levels", {}).get("salt")
-            saturated_fat_100g = product["nutriments"]["saturated-fat_100g"]
-            saturated_fat_level = product.get(
-                "nutrient_levels", {}).get("saturated-fat")
-            sugars_100g = product.get("nutriments", {}).get("sugars_100g")
-            sugars_level = product.get("nutrient_levels", {}).get("sugars")
-        except KeyError:
-            return None
-        brands = product.get("brands").lower().split(",")
-        for brand in brands:
-            b, created = Brand.objects.get_or_create(
-                name=brand)
+        if (not product.get('product_name')):
+            name = product.get("product_name")
+            nutriscore = product.get("nutrition_grades")
+            nova = product.get("nova_group")
+            url = product.get("url")
+            description = product.get("ingredients_text")
+            barcode = product.get("code")
+            picture = product.get("image_front_url")
+            try:
+                fat_100g = product.get("nutriments", {}).get("fat_100g")
+                fat_level = product.get("nutrient_levels", {}).get("fat")
+                salt_100g = product.get("nutriments", {}).get("salt_100g")
+                salt_level = product.get("nutrient_levels", {}).get("salt")
+                saturated_fat_100g = product["nutriments"]["saturated-fat_100g"]
+                saturated_fat_level = product.get(
+                    "nutrient_levels", {}).get("saturated-fat")
+                sugars_100g = product.get("nutriments", {}).get("sugars_100g")
+                sugars_level = product.get("nutrient_levels", {}).get("sugars")
+            except KeyError:
+                return None
+            brands = product.get("brands").lower().split(",")
+            for brand in brands:
+                b, created = Brand.objects.get_or_create(
+                    name=brand)
 
-        p, created = Product.objects.get_or_create(
-            name=name, nutriscore=nutriscore, nova=nova, url=url, barcode=barcode,
-            description=description, picture=picture, fat_100g=fat_100g, fat_level=fat_level,
-            salt_100g=salt_100g, salt_level=salt_level, saturated_fat_100g=saturated_fat_100g,
-            saturated_fat_level=saturated_fat_level, sugars_100g=sugars_100g, sugars_level=sugars_level,
-            brand=b)
-        return p
+            p, created = Product.objects.get_or_create(
+                name=name, nutriscore=nutriscore, nova=nova, url=url, barcode=barcode,
+                description=description, picture=picture, fat_100g=fat_100g, fat_level=fat_level,
+                salt_100g=salt_100g, salt_level=salt_level, saturated_fat_100g=saturated_fat_100g,
+                saturated_fat_level=saturated_fat_level, sugars_100g=sugars_100g, sugars_level=sugars_level,
+                brand=b)
+            return p

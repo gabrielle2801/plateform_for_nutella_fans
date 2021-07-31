@@ -4352,11 +4352,7 @@ textarea.form-control-lg {
 .card-img-bottom {
   width: 100%;
 }
-.product-img{
-    height: 150px;
-    width: 100%;
-    object-fit: contain;
-}
+
 .card-img,
 .card-img-top {
   border-top-left-radius: calc(0.25rem - 1px);
@@ -10850,10 +10846,9 @@ body {
 }
 
 .btn {
-  padding: 1.25rem 2.25rem;
   font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: lowercase;
   border: none;
   border-radius: none;
   align-items: flex-start;
@@ -11015,6 +11010,7 @@ header.masthead h1, header.masthead .h1 {
 .bi-person-circle {
   font-size: 1.5rem !important;
 }
+
 .fa-sign-out-alt {
   color: white;
   font-size: 1.5rem !important;
@@ -11022,4 +11018,11 @@ header.masthead h1, header.masthead .h1 {
 .fa-user{
   color: white;
   font-size: 1.5rem !important;
+}
+
+p.mention{
+  font-weight: 100;
+}
+h4.mention-titre{
+  font-weight: 200;
 }

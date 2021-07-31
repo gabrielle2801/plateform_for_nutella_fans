@@ -38,16 +38,15 @@
                             </form>
                             {% if user.is_authenticated %}
 
-                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user"></i></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.id %}"><i class="fas fa-user"></i></i></a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'favorites_list' %}">
                                 <i class="fas fa-carrot"></i></a></li>
                                  <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
                                 </li>
                             {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-user"></i></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}"><i class="fas fa-carrot"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
                             {% endif %}
-
                         </ul>
                     </div>
                 </div>
@@ -142,7 +141,7 @@
                         </div>
                         <div class="col-lg-4 text-center mb-5 mb-lg-0">
                             <i class="bi bi-envelope-fill fs-2 mb-3 text-muted "></i>
-                            <div>contact@purbeurre.com</div>
+                            <div><a href="mailto:contact@purbeurre.com">contact@purbeurre.com</a></div>
                         </div>
                     </div>
                 </div>
@@ -154,10 +153,10 @@
                 <div class="container px-4 px-lg-5">
                      <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6 text-center">
-                            <a class="col-lg-8 col-xl-6" href="">Mentions Légales</a>
+                            <a class="col-lg-8 col-xl-6" href="{% url 'legal_notice' %}">Mentions Légales</a>
                         </div>
                         <div class="col-lg-8 col-xl-6 text-center">
-                            <a class="col-lg-8 col-xl-6" href="">Contact</a>
+                            <a class="col-lg-8 col-xl-6" href="mailto:contact@purbeurre.com">Contact</a>
                         </div>
                         <div class="container px-4 px-lg-5">
                             <div class="small text-center text-muted">Copyright &copy; 2021 - Company Name</div>

@@ -28,6 +28,27 @@ main {
   border: 2px solid #f4623a;
   border-radius: 0.25rem;
 }
+.card-search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 2px solid #dc3545;
+  border-radius: 0.25rem;
+}
+.product {
+    background-color:#dc3545 !important ;
+    position: relative;
+    bottom: 0;
+}
+.product-title{
+    text-align: center !important;
+    font-family: "Helvetica Neue" !important;
+    color: #f9fafb !important;
+}
 .product-card {
     position: relative;
     width: 65%;
@@ -141,7 +162,7 @@ main {
     font-size: 1.5rem;
 }
 footer.detail-product{
-    position:fixed;
+    position:relative;
     bottom:0;
     width: 100%;
 }
@@ -150,6 +171,7 @@ footer.detail-product{
     height: 100%;
     object-fit: contain;
     object-position: 50% 50%;
+    margin-top: 1rem;
 }
 .container-product-search-title{
     padding: 0.5rem;
@@ -179,6 +201,12 @@ header.masthead-search{
     margin: 0;
     padding: 1rem;
     border-radius: 50px;
+}
+.product-img{
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    margin-top: 1rem;
 }
 .nutriscore-e {
     border-radius: 12px;
@@ -215,4 +243,16 @@ header.masthead-search{
 
 .btn-detail-product {
     border-radius: 10px;
+}
+.product-img-search{
+    height: 200px !important;
+    width: 100% !important;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+.bi-emoji-frown
+{
+    color: #345a61;
+    font-size: 7rem !important;
+
 }
