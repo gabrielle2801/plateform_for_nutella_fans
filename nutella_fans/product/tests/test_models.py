@@ -1,8 +1,8 @@
 from django.test import TestCase
-from product.models import Product, Category, Brand, Store
+from nutella_fans.product.models import Product, Category, Brand
 from unittest import mock
-import requests
-from product.management.commands.import_off import Command
+# import requests
+from nutella_fans.product.management.commands.import_off import Command
 
 
 class ProductTestCase(TestCase):

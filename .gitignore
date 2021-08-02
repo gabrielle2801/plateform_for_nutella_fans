@@ -162,6 +162,7 @@ Thumbs.db
 node_modules
 .DS_Store
 nutella_fans/static
+nutella/driver
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

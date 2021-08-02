@@ -55,7 +55,6 @@ class UserDetailView(DetailView):
             queryset = self.get_queryset()
 
         user_id = self.request.user.id
-        print(user_id)
         queryset = queryset.filter(pk=user_id)
         obj = queryset.get()
         # product_categories = product.categories.all()
