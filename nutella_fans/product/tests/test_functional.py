@@ -8,6 +8,7 @@ class SeleniumTests(StaticLiveServerTestCase):
         super().setUpClass()
         cls.selenium = WebDriver()
         cls.selenium.implicity_wait(10)
+        browser = webdriver.Firefox()
 
     @classmethod
     def tearDownClass(cls):
@@ -20,4 +21,4 @@ class SeleniumTests(StaticLiveServerTestCase):
         username_input.send_keys('myuser')
         password_input = self.selenium.find_element_by_name("password")
         password_input.send_keys('secret')
-        self.selenium.find_element_by_xpath('//input[@value="Log in"]').click()
+        self.selenium.find_element_by_class('//input[@value="Log in"]').click()

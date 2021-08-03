@@ -47,3 +47,11 @@ class Product(models.Model):
         Brand, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
     stores = models.ManyToManyField(Store)
+
+    def get_substitutes(self):
+        product_categories = self.categories.all()
+        result = Product.objects.filter(categories__in=product_categories)\
+            .filter(nutriscore__lt=self.nutriscore)\
+            .exclude(pk=self.pk)\
+            .order_by('nutriscore').distinct()
+        return result

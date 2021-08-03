@@ -24,25 +24,17 @@ class SubstituteListView(ListView):
     model = Product
     context_object_name = 'product_list'
 
-    def get_object(self):
-        product = Product.objects.get(pk=self.kwargs.get('product_id'))
-        return product
-
     def get_context_data(self):
         context = super().get_context_data()
-        product = self.get_object()
-        context['product_id'] = self.kwargs.get('product_id')
+        product = Product.objects.get(pk=self.kwargs.get('product_id'))
         context['product'] = product
         return context
 
     def get_queryset(self, *args, **kwargs):
         product_id = self.kwargs.get('product_id')
         product = Product.objects.get(pk=product_id)
-        product_categories = product.categories.all()
-        result = Product.objects.filter(categories__in=product_categories)\
-            .filter(nutriscore__lt=product.nutriscore)\
-            .order_by('nutriscore').distinct()
-        return result
+
+        return product.get_substitutes()
 
 
 class ProductDetailView(DetailView):

@@ -34,10 +34,8 @@ class BaseTest(TestCase):
             name='aliments et boissons à base de végétaux')
         self.product_search = Product.objects.get(pk=self.product_id)
         self.product.categories.add(c)
-
         self.client = Client()
         self.product_url = reverse('product_list')
-        self.product_id = 1
         self.substitute_url = reverse('substitute_list', kwargs={
             'product_id': self.product_id})
         self.factory = RequestFactory()
@@ -46,7 +44,6 @@ class BaseTest(TestCase):
 class ProductListTest(BaseTest):
 
     def test_get_queryset(self):
-        # view.kwargs = dict(pk=self.product_id)
         request = self.factory.get(self.product_url)
         view = ProductListView()
         view.request = request
@@ -67,13 +64,11 @@ class SubstituteListTest(BaseTest):
         view = SubstituteListView()
         view.request = request
 
-        kwargs = {'product_id': 2}
+        view.kwargs = {'product_id': self.product_id}
         product_categories = self.product.categories.all()
-        qs = view.get_queryset(kwargs)
+        qs = view.get_queryset()
 
         self.assertQuerysetEqual(
             qs, Product.objects.filter(categories__in=product_categories)
             .filter(nutriscore__lt=self.product.nutriscore)
             .order_by('nutriscore').distinct())
-
-    # def get_queryset(self):
