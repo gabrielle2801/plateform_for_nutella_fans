@@ -217,10 +217,9 @@ class ProductDetailTest(TestCase):
                                                 picture='https://static.openfoodfacts.org/images/'
                                                 'products/322/982/012/9488/front_fr.166.400.jpg',
                                                 brand_id=brand_p2)
-        # detail_id = product_better.pk
+        detail_id = product_better.pk
         # detail_id = product_better.pk
         # detail_url = reverse('detail_substitute', kwargs={
         #                    'substitute_id': detail_id})
-        response = product_better.get_substitutes()
-
+        response = product_better.get()
         assert product_better in response
