@@ -193,33 +193,7 @@ class ProductDetailTest(TestCase):
                                                 brand_id=brand_p2)
         detail_id = product_better.pk
         detail_url = reverse('detail_substitute', kwargs={
-                             'substitute_id': detail_id})
+                             'pk': detail_id})
         response = self.client.get(detail_url)
         assert response.status_code == 200
         self.assertTemplateUsed(response, 'product/detail_substitute.html')
-
-    def test_detail_product(self):
-        brand_p2 = Brand.objects.create(name='bjorg').pk
-        product_better = Product.objects.create(name='Muesli Raisin, Figue, Abricot',
-                                                nutriscore='a', nova=1,
-                                                url='https://fr.openfoodfacts.org/produit/'
-                                                '3229820129488/muesli-raisin-figue-abricot-bjorg',
-                                                barcode=3229820129488,
-                                                description="Flocons d'avoine* 44%, flocons d'épeautre*"
-                                                "(blé) 15%, raisins* 10%, (raisins*, huile de tounesol*)"
-                                                ", pétales de maïs*, figues* 9% (farine de riz*),"
-                                                "graines* 6% (graines de tournesol*,"
-                                                "graines de lin*, graines de courge*),"
-                                                "abricots* 4% (farine de riz*),"
-                                                "pétales d'épeautre* complet (blé) 3%."
-                                                "Peut contenir des traces de fruits à coque,"
-                                                "lait, graines de sésame, soja et sulfites.",
-                                                picture='https://static.openfoodfacts.org/images/'
-                                                'products/322/982/012/9488/front_fr.166.400.jpg',
-                                                brand_id=brand_p2)
-        detail_id = product_better.pk
-        # detail_id = product_better.pk
-        # detail_url = reverse('detail_substitute', kwargs={
-        #                    'substitute_id': detail_id})
-        response = product_better.get()
-        assert product_better in response

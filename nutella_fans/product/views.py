@@ -39,12 +39,3 @@ class SubstituteListView(ListView):
 class ProductDetailView(DetailView):
     template_name = 'product/detail_substitute.html'
     model = Product
-
-    def get_object(self, queryset=None):
-        if queryset is None:
-            queryset = self.get_queryset()
-
-        substitute_id = self.kwargs.get('substitute_id')
-        queryset = queryset.filter(pk=substitute_id)
-        obj = queryset.get()
-        return obj
