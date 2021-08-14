@@ -1,5 +1,5 @@
 from django.test import TestCase
-from nutella_fans.product.models import Product, Category, Brand
+from nutella_fans.product.models import Product, Category, Brand, Store
 from unittest import mock
 # import requests
 from nutella_fans.product.management.commands.import_off import Command
@@ -39,10 +39,20 @@ class ProductTestCase(TestCase):
         max_length = brand._meta.get_field('name').max_length
         self.assertEquals(max_length, 200)
 
-    def test_object_name_is_name(self):
+    def test_brand_name_is_name(self):
         brand = Brand.objects.get(id=1)
         expected_object_name = brand.name
         self.assertEquals(expected_object_name, str(brand))
+
+    def test_category_name_is_name(self):
+        category = Category.objects.get(id=1)
+        expected_object_name = category.name
+        self.assertEquals(expected_object_name, str(category))
+
+    def test_store_name_is_name(self):
+        store = Store.objects.get(id=1)
+        expected_object_name = store.name
+        self.assertEquals(expected_object_name, str(store))
 
     def test_lower_item(self):
         self.assertEquals('BJORG'.lower(), 'bjorg')

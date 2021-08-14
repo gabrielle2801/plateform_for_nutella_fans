@@ -59,5 +59,5 @@ class FavoriteDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         substitute_id = self.kwargs.get('fav.id')
         delete = self.post(request, Substitute.objects.filter(substitute_id=substitute_id).delete())
-        messages.success(request, 'Le substitut a bien été supprimer')
+        messages.success(request, 'Le substitut a bien été supprimé')
         return delete

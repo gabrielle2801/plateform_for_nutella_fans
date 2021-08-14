@@ -33,7 +33,6 @@ class SubstituteListView(ListView):
     def get_queryset(self, *args, **kwargs):
         product_id = self.kwargs.get('product_id')
         product = Product.objects.get(pk=product_id)
-
         return product.get_substitutes()
 
 
@@ -48,5 +47,4 @@ class ProductDetailView(DetailView):
         substitute_id = self.kwargs.get('substitute_id')
         queryset = queryset.filter(pk=substitute_id)
         obj = queryset.get()
-        # product_categories = product.categories.all()
         return obj
