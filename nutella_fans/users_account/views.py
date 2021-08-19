@@ -44,18 +44,3 @@ def logout_request(request):
 class UserDetailView(DetailView):
     model = User
     template_name = 'registration/profile.html'
-    # context_object_name = 'users'
-
-    def get_queryset(self):
-        qs = super().get_queryset()
-        return qs
-
-    def get_object(self, queryset=None):
-        if queryset is None:
-            queryset = self.get_queryset()
-
-        user_id = self.request.user.id
-        queryset = queryset.filter(pk=user_id)
-        obj = queryset.get()
-        # product_categories = product.categories.all()
-        return obj

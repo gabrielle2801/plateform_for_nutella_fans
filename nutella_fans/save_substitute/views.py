@@ -24,7 +24,6 @@ class FavorateListView(ListView):
         return context
 
     def get_queryset(self, *args, **kwargs):
-        # product = self.request.GET.get('product_id')
         substitute = Substitute.objects.filter(
             substitute_id=self.request.GET.get('substitute_id'))
 
@@ -48,7 +47,10 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
                                                    substitute_id=self.request.POST.get('substitute_id'))
 
             user.substitutes.add(substitute)
-
+            messages.success(request, 'Le produit est bien dans votre liste de favoris')
+        else:
+            messages.warning(
+                request, 'Le produit existe déja dans votre liste de favoris')
         return redirect('favorites_list')
 
 
@@ -58,6 +60,7 @@ class FavoriteDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         substitute_id = self.kwargs.get('fav.id')
-        delete = self.post(request, Substitute.objects.filter(substitute_id=substitute_id).delete())
+        delete = self.post(request, Substitute.objects.filter(
+            substitute_id=substitute_id).delete())
         messages.success(request, 'Le substitut a bien été supprimé')
         return delete

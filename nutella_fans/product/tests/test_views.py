@@ -192,8 +192,8 @@ class ProductDetailTest(TestCase):
                                                 ' products/377/000/800/9653/front_fr.63.400.jpg',
                                                 brand_id=brand_p2)
         detail_id = product_better.pk
-        detail_url = reverse('detail_substitute', kwargs={
+        detail_url = reverse('detail_product', kwargs={
                              'pk': detail_id})
         response = self.client.get(detail_url)
         assert response.status_code == 200
-        self.assertTemplateUsed(response, 'product/detail_substitute.html')
+        self.assertTemplateUsed(response, 'product/detail_product.html')

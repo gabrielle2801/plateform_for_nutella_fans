@@ -28,6 +28,7 @@ class ProductTestCase(TestCase):
                                brand_id=1
                                )
         Category.objects.create(name='aliments et boissons à base de végétaux')
+        Store.objects.create(name='géant casino')
 
     def test_name_label(self):
         product = Product.objects.get(id=1)

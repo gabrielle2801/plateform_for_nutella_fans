@@ -18,7 +18,7 @@
                         <img src="{{product.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{product.name}}</p>
                         <div class="card-footer d-flex product align-content-around mt-auto">
-                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button"   href="{% url 'detail_substitute' product.id %}">
+                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_product"  type="button"   href="{% url 'detail_product' product.id %}">
                             <i class="bi bi-info-circle"></i>
                             </a>
                             <p class="card-title product-title">Produit recherche</p>
@@ -41,7 +41,7 @@
                         <img src="{{substitute.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{substitute.name}}</p>
                         <div class="card-footer d-flex favoris align-content-around mt-auto">
-                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button"   href="{% url 'detail_substitute' substitute.id %}">
+                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_product"  type="button"   href="{% url 'detail_product' substitute.id %}">
                             <i class="bi bi-info-circle"></i>
                             </a>
                          {% if user.is_authenticated %}
@@ -53,7 +53,7 @@
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="Enregistrer ce substitut dans vos favoris">
                             <i class="bi bi-heart"></i>
                             </button>
-                         </form>
+                            </form>
                          {% endif %}
                          </div>
                     </div>

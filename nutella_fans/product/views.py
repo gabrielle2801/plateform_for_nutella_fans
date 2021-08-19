@@ -37,5 +37,5 @@ class SubstituteListView(ListView):
 
 
 class ProductDetailView(DetailView):
-    template_name = 'product/detail_substitute.html'
+    template_name = 'product/detail_product.html'
     model = Product
