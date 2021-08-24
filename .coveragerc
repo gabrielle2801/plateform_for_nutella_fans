@@ -1,0 +1,6 @@
+[run]
+omit=
+    */myvenv/*
+    */tests/*
+    */migrations/*
+    */staticfiles/*
