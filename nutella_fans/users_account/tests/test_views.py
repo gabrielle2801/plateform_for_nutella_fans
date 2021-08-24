@@ -1,17 +1,25 @@
 # from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from django.test import TestCase, Client
+from django.test import TestCase, Client, RequestFactory
 from django.urls import reverse
+# from django.contrib.auth.models import AnonymousUser
+
+from nutella_fans.users_account.views import UserDetailView
+from nutella_fans.users_account.models import User
 
 
 class BaseTest(TestCase):
-    def setUp(self):
+    def setUp(self, *args, **kwargs):
         User = get_user_model()
+        user_id = 2
+        self.user = User.objects.create_user(
+            username='test', password='12test12', email='test@email.com')
         self.login_url = reverse('login')
         self.signup_url = reverse('sign_up')
         self.logout_url = reverse('logout')
-        self.user = User.objects.create_user(
-            username='test', password='12test12', email='test@email.com')
+        self.profile_url = reverse(
+            'profile', args=[user_id])
+
         self.user = {
             'username': 'username',
             'password1': 'password@1234',
@@ -78,3 +86,13 @@ class LogoutTest(BaseTest):
     def test_user_logout(self):
         response = self.client.post(self.login_url, follow=True)
         self.assertFalse(response.context['user'].is_active)
+
+
+class ProfilTest(BaseTest):
+    def test_get_queryset(self):
+        request = RequestFactory().get(self.profile_url)
+        view = UserDetailView()
+        view.request = request
+        user_email = 'test@email.com'
+        qs = view.get_queryset()
+        self.assertQuerysetEqual(qs, User.objects.filter(email=user_email))

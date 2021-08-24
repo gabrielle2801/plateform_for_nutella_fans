@@ -1,5 +1,5 @@
 /*!
-* Start Bootstrap - Creative v7.0.2 (https://startbootstrap.com/theme/creative)
+* Start Bootstrap - Creative v7.0.4 (https://startbootstrap.com/theme/creative)
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
 */
@@ -55,3 +55,5 @@ window.addEventListener('DOMContentLoaded', event => {
     new SimpleLightbox({
         elements: '#portfolio a.portfolio-box'
     });
+
+});

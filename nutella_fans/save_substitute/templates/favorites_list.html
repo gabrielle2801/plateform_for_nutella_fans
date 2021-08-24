@@ -66,7 +66,7 @@
 {% endblock%}
 {% block content%}
 <section class="main-section">
-    <div class="d-flex messages justify-content-center">
+    <div class="d-flex messages-success justify-content-center">
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success' %}
@@ -79,20 +79,34 @@
             {% endfor %}
         {% endif %}
     </div>
+    <div class="d-flex messages-warning justify-content-center">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'warning' %}
+                    <p class="alert alert-{{message.tag}} d-flex align-items-center alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle-fill msg-icon"></i>
+                    {{message}}
+                    <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="row">
         {% if favorite_list %}
             {% for fav in favorite_list%}
+
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-around">
                     <div class="card product-card d-flex flex-column ">
                         <img src="{{fav.substitute.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{fav.substitute.name}}</p>
                         <div class="card-footer d-flex favoris align-content-around mt-auto">
-                                <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button" href="{% url 'detail_substitute' fav.substitute.id %}"
+                                <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_product"  type="button" href="{% url 'detail_product' fav.substitute.id %}"
                                  data-toggle="tooltip" data-placement="bottom">
                                     <span>Afficher les details du favoris</span>
                                     <i class="bi bi-info-circle"></i>
                                 </a>
-                                <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_substitute"  type="button" href="{% url 'detail_substitute' fav.product.id %}"
+                                <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_product"  type="button" href="{% url 'detail_product' fav.product.id %}"
                                  data-toggle="tooltip" data-placement="bottom">
                                     <span>Afficher les détails du produit choisi</span>
                                     <i class="fab fa-product-hunt"></i>
@@ -133,7 +147,7 @@
 {% endblock%}
 <!-- Footer-->
      {% block footer %}
-        <footer class="bg-light py-3 detail-product">
+        <footer class="bg-light py-3 footer-sticky">
             <div class="container px-4 px-lg-5">
                  <div class="row ">
                     <div class="col-lg-8 col-xl-6 text-center">

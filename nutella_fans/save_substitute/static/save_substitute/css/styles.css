@@ -3,6 +3,11 @@
     position: relative;
     bottom: 0;
 }
+.favoris:hover {
+    background-color:#345a61 !important ;
+    position: relative;
+    bottom: 0;
+}
 
 .bi-info-circle{
   font-size: 1.5rem !important;
@@ -18,7 +23,7 @@
     font-size: 12px;
     line-height: 1.42857;
 }
-.card-footer .btn, .btn-detail ,.btn-delete {
+.card-footer .btn, .btn-detail {
     width: 2.5rem !important;
     height: 2.5rem ! important;
     margin: 0 0.5rem 0 0;
@@ -26,6 +31,15 @@
     background-color: salmon !important;
     border-radius: 0.5rem !important;
 }
+.card-footer:hover .btn, .btn-detail{
+    width: 2.5rem !important;
+    height: 2.5rem ! important;
+    margin: 0 0.5rem 0 0;
+    color: white;
+    background-color: #86ebe6 !important;
+    border-radius: 0.5rem !important;
+}
+
 .btn:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
@@ -47,7 +61,7 @@ a span{
      margin-top:150px;
      margin-left:-35px;
      color:#f9fafb;
-     background:#dc3545;
+     background:#e8a75d;
      padding:15px;
      border-radius:3px;
      box-shadow:0 0 2px rgba(0,0,0,.5);
@@ -72,8 +86,13 @@ a:hover span, a:focus span{
     object-fit: contain;
     margin-top: 1rem;
 }
-.messages{
+.messages-success{
     color: #508d8a;
     background-color: #e7fbfa;
     border-color: #dbf9f8;
+}
+.messages-warning{
+    color: #f4623a;
+    background-color: #f4623a26;
+    border-color: #f4623a26;
 }
