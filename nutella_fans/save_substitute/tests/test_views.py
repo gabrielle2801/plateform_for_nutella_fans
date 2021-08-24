@@ -82,7 +82,7 @@ class SaveFavoriteTest(TestCase):
                                               "cacao maigre 7,4%, émulsifiants: lécithines [soja] ; vanilline. Sans gluten",
                                               picture='https://images.openfoodfacts.org/images/'
                                               ' products/301/762/042/2003/front_en.288.400.jpg',
-                                              brand_id=brand_p1).pk
+                                              brand_id=brand_p1)
         product_better = Product.objects.create(name='OUF! La pâte à tartiner Cacao Noisettes - Funky Veggie - 200 g',
                                                 nutriscore='b', nova=3,
                                                 url='https://fr.openfoodfacts.org/produit/'
@@ -94,10 +94,10 @@ class SaveFavoriteTest(TestCase):
                                                 "ingrédients issus de l'agriculture biologique",
                                                 picture='https://images.openfoodfacts.org/images/'
                                                 ' products/377/000/800/9653/front_fr.63.400.jpg',
-                                                brand_id=brand_p2).pk
+                                                brand_id=brand_p2)
 
         login = self.client.login(username='user', password='12test12')
         self.assertTrue(login)
-        response = self.client.post('substitute_list', {
-            'product_id': product, 'substitute_id': product_better})
+        response = self.client.post(reverse('substitute_save'), {
+            'product_id': product.id, 'substitute_id': product_better.id}, follow=True)
         self.assertEquals(response.status_code, 200)

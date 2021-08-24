@@ -14,20 +14,11 @@ from nutella_fans.users_account.models import User
 class FavorateListView(ListView):
     template_name = 'favorites_list.html'
     model = Substitute
+    context_object_name = 'favorite_list'
 
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data()
-        # Add in a QuerySet of all the substitutes
-        context['favorite_list'] = Substitute.objects.filter(
-            user=self.request.user)
-        return context
-
-    def get_queryset(self, *args, **kwargs):
-        substitute = Substitute.objects.filter(
-            substitute_id=self.request.GET.get('substitute_id'))
-
-        return substitute
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
 
 
 class SubtituteSaveView(LoginRequiredMixin, CreateView):
@@ -47,7 +38,8 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
                                                    substitute_id=self.request.POST.get('substitute_id'))
 
             user.substitutes.add(substitute)
-            messages.success(request, 'Le produit est bien dans votre liste de favoris')
+            messages.success(
+                request, 'Le produit est bien dans votre liste de favoris')
         else:
             messages.warning(
                 request, 'Le produit existe déja dans votre liste de favoris')
