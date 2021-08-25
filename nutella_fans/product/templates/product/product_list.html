@@ -9,7 +9,7 @@
 
         <title>{% block title %}Pur Beurre{% endblock title%}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../static/dist/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -73,7 +73,17 @@
                     <div class="card product-card d-flex flex-column ">
                         <img src="{{product.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
                         <p class="card-title">{{product.name}}</p>
-                            <a class="btn btn-primary mt-auto" name="search_substitute" role="button" href="{% url 'substitute_list' product_id=product.id %}" value='{{request.GET.search_substitute}}'>Trouver un substitut</a>
+                        <div class="card-footer d-flex product align-content-around mt-auto">
+                            <a  class="d-flex justify-content-center align-items-center btn btn-detail" name="detail_product"  type="button" href="{% url 'detail_product' product.id  %}"
+                                     data-toggle="tooltip" data-placement="bottom">
+                            <span>Afficher les détails du produit choisi</span>
+                            <i class="bi bi-info-circle"></i>
+                            </a>
+                            <a class="d-flex justify-content-center align-items-center btn btn-detail" name="search_substitute" type="button" href="{% url 'substitute_list' product_id=product.id %}" value='{{request.GET.search_substitute}}' data-toggle="tooltip" data-placement="bottom">
+                                <span>Trouver des produits plus sains</span>
+                                <i class="bi bi-search"></i>
+                            </a>
+                        </div>
                         <div class="card-score card-score-color-{{ product.nutriscore }} text-center" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Nutriscore, de A (très bon) à ''E'' (Très mauvais)">{{product.nutriscore}}
                         </div>

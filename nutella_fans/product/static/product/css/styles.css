@@ -205,7 +205,16 @@ header.masthead-search{
     background-size: cover;
     height: 5rem;
 }
-
+header.masthead-substitute{
+    padding-top: 15rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgb(244 98 58 / 61%) 0%, rgba(255 255 255 / 70%) 100%),url("../assets/img/bg-purbeurre.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 25rem;
+}
 .d-block {
     display: block !important;
 }
@@ -222,6 +231,21 @@ header.masthead-search{
     width: 100%;
     object-fit: contain;
     margin-top: 1rem;
+}
+.product-bandeau{
+    position : relative;
+    height: 150px !important;
+    width: 100%!important;
+    object-fit: contain;
+    top: -85px;
+    box-shadow:0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); ;
+}
+h5.title-result {
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin-top: 95px !important;
+
 }
 .nutriscore-e {
     border-radius: 12px;
@@ -269,5 +293,61 @@ header.masthead-search{
 {
     color: #345a61;
     font-size: 7rem !important;
+
+}
+.bi.bi-search{
+   font-size: 1.3rem !important;
+}
+a:hover .icon-favoris ,a:focus .icon-favoris{
+     background:rgba(0,0,0,.4);
+     box-shadow:0 1px 0 rgba(255,255,255,.4);
+
+
+}
+a span{
+     position:absolute;
+     margin-top:150px;
+     margin-left:-35px;
+     color:#f9fafb;
+     background:#e8a75d;
+     padding:15px;
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+}
+a:hover span, a:focus span{
+     transform:scale(1) rotate(0);
+
+}
+button span{
+     position:absolute;
+     margin-top:150px;
+     margin-left:-35px;
+     color:#f9fafb;
+     background:#e8a75d;
+     padding:15px;
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+}
+button:hover span, button:focus span{
+     transform:scale(1) rotate(0);
+
+}
+.product {
+    background-color:#f4623a !important ;
+    position: relative;
+    bottom: 0;
+}
+.product:hover {
+    background-color:#345a61 !important ;
+    position: relative;
+    bottom: 0;
+}
+
+.btn:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 }
