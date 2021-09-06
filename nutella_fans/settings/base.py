@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
     'nutella_fans.base.apps.BaseConfig',
     'nutella_fans.product.apps.ProductConfig',
     'nutella_fans.save_substitute.apps.SaveSubstituteConfig',
