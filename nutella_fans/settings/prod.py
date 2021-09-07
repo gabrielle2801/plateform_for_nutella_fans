@@ -17,17 +17,5 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'nutella_fans.base.apps.BaseConfig',
-    'nutella_fans.product.apps.ProductConfig',
-    'nutella_fans.save_substitute.apps.SaveSubstituteConfig',
-    'nutella_fans.users_account.apps.UsersAccountConfig',
-]
 
 django_heroku.settings(locals())
