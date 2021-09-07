@@ -4,7 +4,7 @@ import os
 
 DEBUG = False
 ALLOWED_HOSTS = ['.herokuapp.com']
-SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASES = {
     'default': {
