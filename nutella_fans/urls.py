@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-# from django.conf import settings
+from django.conf import settings
 
 
 urlpatterns = [
@@ -27,8 +27,7 @@ urlpatterns = [
     path('', include('nutella_fans.save_substitute.urls')),
     path('', include('nutella_fans.base.urls')),
 ]
-'''
-if 'debug_toolbar' in settings.INSTALLED_APPS:
+
+if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
-'''
