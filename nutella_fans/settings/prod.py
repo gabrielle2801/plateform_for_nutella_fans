@@ -7,7 +7,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 ALLOWED_HOSTS = ['.herokuapp.com']
 SECRET_KEY = os.getenv("SECRET_KEY")
-print(SECRET_KEY)
 
 DATABASES = {
     'default': {
