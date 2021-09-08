@@ -27,6 +27,6 @@ urlpatterns = [
     path('', include('nutella_fans.save_substitute.urls')),
     path('', include('nutella_fans.base.urls')),
 ]
-if settings.DEBUG:
+if 'debug_toolbar' in settings.INSTALLED_APPS:
     import debug_toolbar
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
