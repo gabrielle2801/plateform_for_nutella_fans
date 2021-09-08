@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.conf import settings
 import debug_toolbar
 
 urlpatterns = [
@@ -23,7 +24,8 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('', include('nutella_fans.product.urls')),
     path('', include('nutella_fans.users_account.urls')),
-    path('__debug__/', include(debug_toolbar.urls)),
     path('', include('nutella_fans.save_substitute.urls')),
     path('', include('nutella_fans.base.urls')),
 ]
+if settings.DEBUG:
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
