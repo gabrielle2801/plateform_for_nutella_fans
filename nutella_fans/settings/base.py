@@ -133,14 +133,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    "/product_list/product/static",
-    "/substitute_list/product/static",
-    "/detail_product/product/static",
-    "/favorites_list/save_substitute/static",
-    "/login/users_account/static",
-    "/profile/users_account/static",
-    "/sign_up/users_account/static",
+    os.path.join(BASE_DIR, 'base/static'),
+    os.path.join(BASE_DIR, 'product/static'),
+    os.path.join(BASE_DIR, 'save_substitute/static'),
+    os.path.join(BASE_DIR, 'users_account/static'),
 ]
 
 
