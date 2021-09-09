@@ -1,4 +1,5 @@
 {% extends '../registration/sign_up.html' %}
+
 {% block header %}
 <header class="simple-header d-flex align-items-center">
     <div class="container px-4 px-lg-5">
@@ -25,7 +26,7 @@
         </form>
         <div class="further-instructions">
           <p class="text-body">Vous n'avez pas de compte ?</p>
-          <a class="text-body fw-bold text-decoration-underline" href="{% url 'login' %}">Incrivez-vous !</a>
+          <a class="text-body fw-bold text-decoration-underline" href="{% url 'sign_up' %}">Incrivez-vous !</a>
         </div>
   </section>
 </main>

@@ -1,31 +1,31 @@
 {% extends '../registration/sign_up.html' %}
 {% block nav %}
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-                <div class="container px-4 px-lg-5">
-                    <div class="img-fluid">
-                        <img  src="../static/assets/img/logo_pur_beurre.png"  height="30" width="30">
-                    </div>
-                    <a class="navbar-brand" href="{% url 'base' %}">Pur Beurre</a>
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                            <form  method="get" action="{% url 'product_list' %}">
-                                <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
-                            </form>
-                            {% if user.is_authenticated %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.id %}"><i class="fas fa-user"></i></i></a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'favorites_list' %}">
-                                <i class="fas fa-carrot"></i></a></li>
-                                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
-                                </li>
-                            {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <div class="img-fluid">
+                <img  src="../static/assets/img/logo_pur_beurre.png"  height="30" width="30">
+            </div>
+            <a class="navbar-brand" href="{% url 'base' %}">Pur Beurre</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <form  method="get" action="{% url 'product_list' %}">
+                        <input type="text" name="search_product" id="navbar" class="form-control navbar" placeholder="Rechercher">
+                    </form>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.id %}"><i class="fas fa-user"></i></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'favorites_list' %}">
+                        <i class="fas fa-carrot"></i></a></li>
+                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
         {% endblock nav %}
 {% block header %}
 <header class="simple-header d-flex align-items-center">
