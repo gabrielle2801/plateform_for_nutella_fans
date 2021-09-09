@@ -149,7 +149,7 @@ AUTH_USER_MODEL = 'users_account.User'
 LOGIN_REDIRECT_URL = 'base'
 LOGOUT_REDIRECT_URL = 'base'
 LOGIN_URL = 'login'
-
+MAX_IMPORT_PRODUCTS = int(os.getenv("MAX_IMPORT_PRODUCTS", "50"))
 
 INTERNAL_IPS = [
     '127.0.0.1',

@@ -1,5 +1,6 @@
 import requests
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from nutella_fans.product.models import Category, Product, Brand, Store
 
 
@@ -57,7 +58,7 @@ class Command(BaseCommand):
             "tag_contains_0": "contains",
             "tag_0": category,
             "sort_by": "unique_scans_n",
-            "page_size": 50,
+            "page_size": settings.MAX_IMPORT_PRODUCTS,
             "json": 1}
         response_product = requests.get(
             "https://fr.openfoodfacts.org/cgi/search.pl?", query)
