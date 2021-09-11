@@ -5,10 +5,22 @@ from nutella_fans.product.models import Category, Product, Brand, Store
 
 
 class Command(BaseCommand):
+
+    """
+    standalone scripts to call the api and import data to database
+    """
+
     def handle(self, *args, **options):
+        """ BaseCommand requires the implementation of handle method
+        Called all functions --> call and request of api
+                             --> insert into data to database
+
+
+        Args:
+            *args: Description
+            **options: Description
+        """
         category_list = self.get_category()
-        # print(category_list)
-        # Category.objects.filter(name=categories).order_by('id').first()
         for category_dict in category_list:
             products = self.get_products(category_dict)
             for product in products:
@@ -31,7 +43,7 @@ class Command(BaseCommand):
 
     def get_category(self):
         """response of the request to extract data from API
-        Parameters:
+
         Returns:
             LIST: list of categories
         """
@@ -47,8 +59,10 @@ class Command(BaseCommand):
         """response of the request to extract data from API
             with queries parameters response : product list according to
             the best categories
+
         Parameters:
             category (STRING): one category
+
         Returns:
             LIST: list of products
         """
@@ -66,6 +80,16 @@ class Command(BaseCommand):
         return result_product["products"]
 
     def create_product(self, product):
+        """Creation of product on product_product table
+            Get product_name or barcode from api for example and
+            insert into on Model Product and others Model thanks to relationship
+
+        Args:
+            product (INT): one product
+
+        Returns:
+            Dict: one product information request to insert on database
+        """
         if (product.get('product_name') and product.get('nutrition_grades')):
             name = product.get("product_name")
             nutriscore = product.get("nutrition_grades")

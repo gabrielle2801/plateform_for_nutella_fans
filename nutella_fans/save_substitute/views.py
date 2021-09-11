@@ -12,21 +12,58 @@ from nutella_fans.users_account.models import User
 
 
 class FavorateListView(ListView):
+
+    """
+    List of healthy product saved by user
+
+    Attributes:
+        context_object_name (str): my own name for object list return
+        model (TYPE): Substitute Model imported
+        template_name (str): location of template
+    """
+
     template_name = 'favorites_list.html'
     model = Substitute
     context_object_name = 'favorite_list'
 
     def get_queryset(self):
+        """Query according to user's login id
+
+        Returns:
+            TYPE: Description
+        """
         queryset = super().get_queryset()
         return queryset.filter(user=self.request.user)
 
 
 class SubtituteSaveView(LoginRequiredMixin, CreateView):
+
+    """
+    Saved healthy and unhealthy products on database if user is logged
+
+    Attributes:
+        fields (list): id of product and substitute
+        on table save_substitute_substitute
+        model (TYPE): Substitute Model
+        template_name (str): location of template
+    """
+
     template_name = 'substitute_list.html'
     model = Substitute
     fields = ['product', 'substitute']
 
     def post(self, request, *args, **kwargs):
+        """
+        create and save on database (Table save_substitute_substitute)
+
+        Args:
+            request (TYPE): message display
+            *args: Description
+            **kwargs: Description
+
+        Returns:
+            template : redirect to favorites template
+        """
         product = Product.objects.get(
             pk=self.request.POST.get('product_id'))
         substitute = Substitute.objects.filter(
@@ -47,10 +84,30 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
 
 
 class FavoriteDeleteView(DeleteView):
+
+    """
+    Delete favorite product of the list
+
+    Attributes:
+        model (TYPE): Substitute model
+        success_url (TYPE): url of favorite template if is ok
+    """
+
     model = Substitute
     success_url = reverse_lazy('favorites_list')
 
     def get(self, request, *args, **kwargs):
+        """
+        Query to delete product on save_substitute_substitute table
+
+        Args:
+            request (TYPE): message display
+            *args: Description
+            **kwargs: Id of the healthy product
+
+        Returns:
+            TYPE: request to delete product
+        """
         substitute_id = self.kwargs.get('fav.id')
         delete = self.post(request, Substitute.objects.filter(
             substitute_id=substitute_id).delete())
