@@ -18,7 +18,6 @@ class PurBeurreTest(StaticLiveServerTestCase):
         search_bar = driver.find_element_by_name("search_product")
         search_bar.clear()
         search_bar.send_keys("Biscuit")
-        driver.implicitly_wait(10)
         search_bar.send_keys(Keys.RETURN)
 
     def test_login(self):
@@ -31,14 +30,3 @@ class PurBeurreTest(StaticLiveServerTestCase):
 
     def tearDown(self):
         self.driver.close()
-
-
-'''
-    def test_search_base_page(self):
-        driver = self.driver
-        driver.get('http://127.0.0.1:8000')
-        heading1 = driver.find_element_by_class_name('text-uppercase')
-        heading1.send_keys('DU GRAS OUI MAIS DE QUALITE !')
-        driver.implicitly_wait(20)
-        heading1.send_keys(Keys.RETURN)
-'''

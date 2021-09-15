@@ -9,7 +9,7 @@
 
         <title>{% block title %}Pur Beurre{% endblock title%}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../static/dist/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -85,9 +85,12 @@
                                 {% elif object.fat_level == 'moderate' %}
                                 <div class="col-2 orange-dot"></div>
                                 <div class="col-10 pt-1">{{ object.fat_100g}} : matières grasses / lipides en quantité modérée</div>
-                                {% else %}
+                                {% elif object.fat_level == 'high' %}
                                 <div class="col-2 red-dot"></div>
                                 <div class="col-10 pt-1">{{ object.fat_100g}} : matières grasses / lipides en quantité élevée</div>
+                                {% else %}
+                                <div class="col-2 none-dot"></div>
+                                <div class="col-10 pt-1">pas de matière gasse dans ce produit</div>
                                 {% endif %}
                             </div>
                             <div class="row product-detail-nutriment-row">
@@ -97,9 +100,12 @@
                                 {% elif object.salt_level == 'moderate' %}
                                 <div class="col-2 orange-dot"></div>
                                 <div class="col-10 pt-1">{{ object.salt_100g}} : sel en quantité modérée</div>
-                                {% else %}
+                                {% elif object.fat_level == 'high' %}
                                 <div class="col-2 red-dot"></div>
                                 <div class="col-10 pt-1">{{ object.salt_100g}} : sel en quantité élevée</div>
+                                % else %}
+                                <div class="col-2 none-dot"></div>
+                                <div class="col-10 pt-1">pas de sel détécté dans le produit</div>
                                 {% endif %}
                             </div>
                             <div class="row product-detail-nutriment-row">
@@ -109,9 +115,12 @@
                                 {% elif object.saturated_fat_level == 'moderate' %}
                                 <div class="col-2 orange-dot"></div>
                                 <div class="col-10 pt-1">{{ object.saturated_fat_100g}} : acides gras saturés en quantité modérée</div>
-                                {% else %}
+                                {% elif object.fat_level == 'high' %}
                                 <div class="col-2 red-dot"></div>
                                 <div class="col-10 pt-1">{{ object.saturated_fat_100g}} : acides gras saturés en quantité élevée</div>
+                                {% else %}
+                                <div class="col-2 none-dot"></div>
+                                <div class="col-10 pt-1">pas de gras saturé détécté dans le produit</div>
                                 {% endif %}
                             </div>
                             <div class="row product-detail-nutriment-row">
@@ -121,9 +130,12 @@
                                 {% elif object.sugars_level == 'moderate' %}
                                 <div class="col-2 orange-dot"></div>
                                 <div class="col-10 pt-1">{{ object.sugars_100g}} : sucres en quantité modérée</div>
-                                {% else %}
+                                {% elif object.fat_level == 'high' %}
                                 <div class="col-2 red-dot"></div>
                                 <div class="col-10 pt-1">{{ object.sugars_100g}} : sucres en quantité élevée</div>
+                                {% else %}
+                                <div class="col-2 none-dot"></div>
+                                <div class="col-10 pt-1">pas de sucre dans le produit</div>
                                 {% endif %}
                             </div>
                         </div>
