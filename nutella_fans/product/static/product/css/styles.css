@@ -17,6 +17,10 @@ main {
         padding-right: 0px;
         padding-left: 0px;
 }
+body {
+    position: relative; /* Sets up positioning for your footer
+*/
+}
 .card {
   display: flex;
   flex-direction: column;
@@ -180,8 +184,8 @@ footer.footer-relative{
     flex-basis: auto;
     padding: 5px;
     text-align: center;
-    position: relative;
-    bottom: 0;
+    position: realtive;
+    bottom: -3rem;
     width: 100%;
 }
 .food-picture-search{
@@ -310,7 +314,7 @@ a:hover .icon-favoris ,a:focus .icon-favoris{
 a span{
      position:absolute;
      margin-top:150px;
-     margin-left:-35px;
+     margin-left: 5px;
      color:#f9fafb;
      background:#e8a75d;
      padding:15px;
