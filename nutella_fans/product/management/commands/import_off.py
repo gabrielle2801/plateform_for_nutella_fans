@@ -112,12 +112,10 @@ class Command(BaseCommand):
             for brand in brands:
                 b, created = Brand.objects.get_or_create(
                     name=brand)
-
-            p, created = Product.objects.get_or_create(
-                name=name, nutriscore=nutriscore, nova=nova, url=url, barcode=barcode,
-                description=description, picture=picture, fat_100g=fat_100g, fat_level=fat_level,
-                salt_100g=salt_100g, salt_level=salt_level, saturated_fat_100g=saturated_fat_100g,
-                saturated_fat_level=saturated_fat_level, sugars_100g=sugars_100g, sugars_level=sugars_level,
-                brand=b)
+            p, created = Product.objects.get_or_create(barcode=barcode, defaults={
+                'name': name, 'nutriscore': nutriscore, 'nova': nova, 'url': url, 'description': description, 'picture': picture, 'fat_100g': fat_100g, 'fat_level': fat_level,
+                'salt_100g': salt_100g, 'salt_level': salt_level, 'saturated_fat_100g': saturated_fat_100g,
+                'saturated_fat_level': saturated_fat_level, 'sugars_100g': sugars_100g, 'sugars_level': sugars_level,
+                'brand': b})
 
             return p
