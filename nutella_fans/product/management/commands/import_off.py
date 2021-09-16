@@ -109,9 +109,9 @@ class Command(BaseCommand):
             sugars_100g = product.get("nutriments", {}).get("sugars_100g")
             sugars_level = product.get("nutrient_levels", {}).get("sugars")
             brands = product.get("brands").lower().split(",")
-            for brand in brands:
-                b, created = Brand.objects.get_or_create(
-                    name=brand)
+
+            b, created = Brand.objects.get_or_create(
+                name=brands[0])
             p, created = Product.objects.get_or_create(barcode=barcode, defaults={
                 'name': name, 'nutriscore': nutriscore, 'nova': nova, 'url': url, 'description': description, 'picture': picture, 'fat_100g': fat_100g, 'fat_level': fat_level,
                 'salt_100g': salt_100g, 'salt_level': salt_level, 'saturated_fat_100g': saturated_fat_100g,
