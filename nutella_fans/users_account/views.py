@@ -69,7 +69,7 @@ class SignupView(View):
 
 class LoginView(View):
 
-    """Clas Based View for user's login
+    """Class Based View for user's login
 
     Attributes:
         template_name (str): template location
