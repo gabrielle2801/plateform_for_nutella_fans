@@ -2,6 +2,7 @@ language: python
 
 addons:
   # ajouter uniquement les navigateurs utilisés
+  chrome: stable
   firefox: latest
 
 install:
