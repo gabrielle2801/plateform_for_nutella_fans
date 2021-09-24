@@ -16,11 +16,13 @@ before_script:
 
 env:
   global:
-    DJANGO_SETTINGS_MODULE=nutella_fans.settings.test
-    SECRET_KEY=travis99secre99tkey
+    DJANGO_SETTINGS_MODULE='nutella_fans.settings.test'
+    SECRET_KEY='travis99secre99tkey'
 
 services:
   - postgresql
 
 script:
-  - python3 manage.py test nutella_fans
+  - python3 manage.py test
+
+
