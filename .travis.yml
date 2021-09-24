@@ -1,12 +1,22 @@
 language: python
 
+addons:
+  # ajouter uniquement les navigateurs utilisés
+  firefox: latest
+
+install:
+  - pip install tchappui-webdrivers
+  - pip install -r requirements.txt
+  - install-webdrivers --path webdrivers
 
 before_script:
-  - pip install -r requirements.txt
+  - install-webdrivers --path /usr/local/bin/
+
 
 env:
-  DJANGO_SETTINGS_MODULE="nutella_fans.settings.test"
-  SECRET_KEY="travis_secret_key"
+  global:
+    DJANGO_SETTINGS_MODULE=nutella_fans.settings.test
+    SECRET_KEY=travis99secre99tkey
 
 services:
   - postgresql
