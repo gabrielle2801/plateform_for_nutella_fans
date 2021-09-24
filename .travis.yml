@@ -30,6 +30,7 @@ env:
     - DB_USER='postgres'
     - DB_PASSWORD='nutellaFans'
     - DB_HOST='localhost'
+    - MOZ_HEADLESS=1
 
 services:
   - postgresql

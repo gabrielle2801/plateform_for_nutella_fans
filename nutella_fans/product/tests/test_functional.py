@@ -4,10 +4,12 @@ from selenium.webdriver.common.keys import Keys
 
 from nutella_fans.users_account.models import User
 
+options = webdriver.FirefoxOptions()
+options.headless = True
 class PurBeurreTest(StaticLiveServerTestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Firefox(options=options)
         self.user = User.objects.create(
             username='Xavier', email='xavier@email.com', password='gabi@1428')
 
