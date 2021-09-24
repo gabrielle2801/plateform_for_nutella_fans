@@ -5,6 +5,12 @@ addons:
   chrome: stable
   firefox: latest
 
+# safelist
+branches:
+  only:
+    - develop
+    - main
+
 install:
   - pip install tchappui-webdrivers
   - pip install -r requirements.txt
@@ -17,12 +23,15 @@ before_script:
 env:
   global:
     - DJANGO_SETTINGS_MODULE='nutella_fans.settings.test'
-    - SECRET_KEY='travis99secre99tkey'
+    - SECRET_KEY_TRAVIS='travis99secre99tkey'
+    - DB_NAME='openfoodfact_db'
+    - DB_USER='postgres'
+    - DB_PASSWORD='nutellaFans'
+    - DB_HOST='localhost'
 
 services:
   - postgresql
 
 script:
   - python3 manage.py test
-
 
