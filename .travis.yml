@@ -4,7 +4,9 @@ language: python
 before_script:
   - pip install -r requirements.txt
 
-env: DJANGO_SETTINGS_MODULE="nutella_fans.settings.test"
+env:
+  DJANGO_SETTINGS_MODULE="nutella_fans.settings.test"
+  SECRET_KEY="travis_secret_key"
 
 services:
   - postgresql
