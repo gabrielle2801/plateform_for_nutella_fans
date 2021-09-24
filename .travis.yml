@@ -19,7 +19,7 @@ install:
 before_script:
   - wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux32.tar.gz
   - tar -xzf geckodriver-v0.30.0-linux32.tar.gz
-  - export PATH=$PATH:/usr/local/bin/geckodriver
+  - sudo cp geckodriver /usr/bin
 
 
 env:
