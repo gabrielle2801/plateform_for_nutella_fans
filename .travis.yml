@@ -8,10 +8,10 @@ addons:
 install:
   - pip install tchappui-webdrivers
   - pip install -r requirements.txt
-  - install-webdrivers --path webdrivers
+
 
 before_script:
-  - install-webdrivers --path /usr/local/bin/
+  - install-webdrivers --path webdrivers
 
 
 env:
