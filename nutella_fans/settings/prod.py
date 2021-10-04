@@ -4,6 +4,8 @@ import os
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
+SENTRY_KEY = os.getenv("SENTRY_KEY")
+
 sentry_sdk.init(
     dsn=SENTRY_KEY,
     integrations=[DjangoIntegration(), sentry_logging],
@@ -22,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 ALLOWED_HOSTS = ['.herokuapp.com', '161.35.213.37']
 SECRET_KEY = os.getenv("SECRET_KEY")
-SENTRY_KEY = os.getenv("SENTRY_KEY")
+
 
 DATABASES = {
     'default': {
