@@ -19,10 +19,6 @@ from django.conf.urls import include
 from django.conf import settings
 
 
-def trigger_error(request):
-    division_by_zero = 1 / 0
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('django.contrib.auth.urls')),
@@ -30,7 +26,6 @@ urlpatterns = [
     path('', include('nutella_fans.users_account.urls')),
     path('', include('nutella_fans.save_substitute.urls')),
     path('', include('nutella_fans.base.urls')),
-    path('sentry-debug/', trigger_error),
 ]
 
 if settings.DEBUG:

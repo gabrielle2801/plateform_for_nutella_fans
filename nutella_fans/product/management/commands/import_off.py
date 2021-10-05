@@ -2,6 +2,7 @@ import requests
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from nutella_fans.product.models import Category, Product, Brand, Store
+from datetime import datetime
 
 
 class Command(BaseCommand):
@@ -20,26 +21,37 @@ class Command(BaseCommand):
             *args: Description
             **options: Description
         """
-        category_list = self.get_category()
-        for category_dict in category_list:
-            products = self.get_products(category_dict)
-            for product in products:
-                p = self.create_product(product)
-                if not p:
-                    continue
-                else:
-                    category_names = product.get(
-                        "categories").lower().split(",")
-                    for category in category_names:
-                        c, created = Category.objects.get_or_create(
-                            name=category)
-                        p.categories.add(c)
-                    if product.get("stores"):
-                        stores = product.get("stores").lower().split(",")
-                        for store in stores:
-                            s, created = Store.objects.get_or_create(
-                                name=store)
-                            p.stores.add(s)
+        now = datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        self.stdout.write(self.style.WARNING(
+            "Début de la mise à jour des données ...", date_time))
+        try:
+            category_list = self.get_category()
+            for category_dict in category_list:
+                products = self.get_products(category_dict)
+                for product in products:
+                    p = self.create_product(product)
+                    if not p:
+                        continue
+                    else:
+                        category_names = product.get(
+                            "categories").lower().split(",")
+                        for category in category_names:
+                            c, created = Category.objects.get_or_create(
+                                name=category)
+                            p.categories.add(c)
+                        if product.get("stores"):
+                            stores = product.get("stores").lower().split(",")
+                            for store in stores:
+                                s, created = Store.objects.get_or_create(
+                                    name=store)
+                                p.stores.add(s)
+            self.stdout.write(self.style.SUCCESS("Mise à jour réussie"))
+        except DatabaseError:
+            self.stderr.write(self.style.ERROR(
+                "La mise à jour a échoué ... "))
+        self.stdout.write(self.style.WARNING(
+            "Fin de la mise à jour des données", date_time))
 
     def get_category(self):
         """response of the request to extract data from API
@@ -47,6 +59,8 @@ class Command(BaseCommand):
         Returns:
             LIST: list of categories
         """
+        self.stdout.write(self.style.WARNING(
+            "Appel à l'api et récupération des 10 meilleurs catégories"))
         response = requests.get("https://fr.openfoodfacts.org/categories.json")
         result_category = response.json()
         data_category = result_category.get('tags')
@@ -66,6 +80,8 @@ class Command(BaseCommand):
         Returns:
             LIST: list of products
         """
+        self.stdout.write(self.style.WARNING(
+            "Récupération des données openfoodfacts --> produits"))
         query = {
             "action": "process",
             "tagtype_0": "categories",

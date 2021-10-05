@@ -7,7 +7,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 SENTRY_KEY = os.getenv("SENTRY_KEY")
 
 sentry_sdk.init(
-    dsn=SENTRY_KEY,
+    dsn="https://5eb6b0358d944509a633afa9d439a7f4@o1010992.ingest.sentry.io/5975763",
     integrations=[DjangoIntegration()],
 
     # Set traces_sample_rate to 1.0 to capture 100%
@@ -22,7 +22,7 @@ sentry_sdk.init(
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
-ALLOWED_HOSTS = ['.herokuapp.com', '161.35.213.37']
+ALLOWED_HOSTS = ['.herokuapp.com', 'purbeurre.ovh', '161.35.213.37']
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
