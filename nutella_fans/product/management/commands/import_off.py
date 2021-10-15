@@ -24,7 +24,7 @@ class Command(BaseCommand):
         now = datetime.now()
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
         self.stdout.write(self.style.WARNING(
-            "Début de la mise à jour des données ..." % date_time))
+            "Début de la mise à jour des données %s ..." % date_time))
         try:
             category_list = self.get_category()
             for category_dict in category_list:
@@ -51,7 +51,7 @@ class Command(BaseCommand):
             self.stderr.write(self.style.ERROR(
                 "La mise à jour a échoué ... "))
         self.stdout.write(self.style.WARNING(
-            "Fin de la mise à jour des données", date_time))
+            "Fin de la mise à jour des données %s " %date_time))
 
     def get_category(self):
         """response of the request to extract data from API
