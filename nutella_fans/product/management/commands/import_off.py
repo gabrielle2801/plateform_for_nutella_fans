@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from nutella_fans.product.models import Category, Product, Brand, Store
 from datetime import datetime
+from django.db import DatabaseError
 
 
 class Command(BaseCommand):
@@ -51,7 +52,7 @@ class Command(BaseCommand):
             self.stderr.write(self.style.ERROR(
                 "La mise à jour a échoué ... "))
         self.stdout.write(self.style.WARNING(
-            "Fin de la mise à jour des données %s " %date_time))
+            "Fin de la mise à jour des données %s " % date_time))
 
     def get_category(self):
         """response of the request to extract data from API
