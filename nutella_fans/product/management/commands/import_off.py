@@ -50,7 +50,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS("Mise à jour réussie"))
         except DatabaseError:
             self.stderr.write(self.style.ERROR(
-                "La mise à jour a échoué ... "))
+                "La mise à jour a échoué ... %s" % DatabaseError))
         self.stdout.write(self.style.WARNING(
             "Fin de la mise à jour des données %s " % date_time))
 
