@@ -2,12 +2,12 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from dotenv import load_dotenv
+import dotenv
 
 
 def main():
     """Run administrative tasks."""
-    load_dotenv()
+    dotenv.read_dotenv(override=True)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                           'nutella_fans.settings.prod')
     try:
