@@ -3,7 +3,9 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from nutella_fans.product.models import Category, Product, Brand, Store
 from datetime import datetime
-from django.db import DatabaseError
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 
 class Command(BaseCommand):
