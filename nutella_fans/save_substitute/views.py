@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib import messages
 
 
@@ -11,7 +11,7 @@ from nutella_fans.save_substitute.models import Substitute, Product
 from nutella_fans.users_account.models import User
 
 
-class FavorateListView(ListView):
+class FavorateList(ListView):
 
     """
     List of healthy product saved by user
@@ -32,9 +32,14 @@ class FavorateListView(ListView):
         Returns:
             TYPE: Description
         """
-        queryset = super().get_queryset()
-        return queryset.filter(user=self.request.user)
 
+        queryset = super().get_queryset()
+        user = self.request.user
+        return queryset.filter(user=user)
+
+
+def handle_server_error(request):
+    return render(request, '500.html')
 
 class SubtituteSaveView(LoginRequiredMixin, CreateView):
 
@@ -64,6 +69,7 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
         Returns:
             template : redirect to favorites template
         """
+
         product = Product.objects.get(
             pk=self.request.POST.get('product_id'))
         substitute = Substitute.objects.filter(
@@ -83,7 +89,7 @@ class SubtituteSaveView(LoginRequiredMixin, CreateView):
         return redirect('favorites_list')
 
 
-class FavoriteDeleteView(DeleteView):
+class FavoriteDeleteView(LoginRequiredMixin, DeleteView):
 
     """
     Delete favorite product of the list
@@ -94,22 +100,15 @@ class FavoriteDeleteView(DeleteView):
     """
 
     model = Substitute
-    success_url = reverse_lazy('favorites_list')
+    # context_object_name = 'favorite_list'
+    template_name = 'substitute_confirm_delete.html'
 
-    def get(self, request, *args, **kwargs):
-        """
-        Query to delete product on save_substitute_substitute table
-
-        Args:
-            request (TYPE): message display
-            *args: Description
-            **kwargs: Id of the healthy product
-
-        Returns:
-            TYPE: request to delete product
-        """
+    def post(self, request, *args, **kwargs):
         substitute_id = self.kwargs.get('fav.id')
-        delete = self.post(request, Substitute.objects.filter(
+        delete = self.delete(request, Substitute.objects.filter(
             substitute_id=substitute_id).delete())
-        messages.success(request, 'Le substitut a bien été supprimé')
         return delete
+
+    def get_success_url(self):
+        messages.success(self.request, 'Le substitut a bien été supprimé')
+        return reverse_lazy('favorites_list')

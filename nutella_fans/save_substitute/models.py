@@ -17,6 +17,3 @@ class Substitute(models.Model):
         Product, on_delete=models.CASCADE, related_name='choosen_product')
     substitute = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='substitute')
-
-    def __str__(self):
-        return self.id

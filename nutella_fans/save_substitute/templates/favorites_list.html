@@ -95,7 +95,6 @@
     <div class="row">
         {% if favorite_list %}
             {% for fav in favorite_list%}
-
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex col-card justify-content-around">
                     <div class="card product-card d-flex flex-column ">
                         <img src="{{fav.substitute.picture}}" class="card-img-top product-img img-fluid rounded d-block align-m">
@@ -112,10 +111,10 @@
                                     <i class="fab fa-product-hunt"></i>
                                 </a>
                             <div class="d-flex me-auto">
-                                <form method="post", action="{% url 'delete_favoris' fav.id %}">
+                                <form method="post", action="{% url 'delete_favorate' fav.id %}">
                                     {% csrf_token %}
-                                    <a  class="d-flex justify-content-center align-items-center btn btn-delete" name="delete_favoris" type="button"
-                                     data-toggle="tooltip" data-placement="bottom" href="{% url 'delete_favoris' fav.id %}">
+                                    <a  class="d-flex justify-content-center align-items-center btn btn-delete" name="delete_favorate" type="button"
+                                     data-toggle="tooltip" data-placement="bottom" href="{% url 'delete_favorate' fav.id %}">
                                         <span>supprimer le favoris</span>
                                         <i class="fas fa-trash"></i>
                                     </a>

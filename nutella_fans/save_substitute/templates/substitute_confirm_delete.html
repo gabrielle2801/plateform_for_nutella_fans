@@ -1,0 +1,15 @@
+{% extends 'favorites_list.html' %}
+
+
+{% block content%}
+<div class="container h-100">
+    {% if favorite_list %}
+    <form action="{% url 'delete_favorate' favorite_list.id%}" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ favorite_list.substitute.name }}"?</p>
+        <input type="submit" value="Confirm" />
+    </form>
+
+    {% endif %}
+</div>
+{% endblock%}
