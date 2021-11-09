@@ -136,17 +136,19 @@ class DeleteFavoriteTest(TestCase):
                                                 "ingrédients issus de l'agriculture biologique",
                                                 picture='https://images.openfoodfacts.org/images/'
                                                 ' products/377/000/800/9653/front_fr.63.400.jpg',
-                                                brand_id=brand_p2)
+                                                brand_id=brand_p2).pk
         login = self.client.login(username='user', password='12test12')
         self.assertTrue(login)
         response = self.client.post(reverse('substitute_save'), {
-            'product_id': product, 'substitute_id': product_better.id}, follow=True)
+            'product_id': product, 'substitute_id': product_better}, follow=True)
+        product_favorate = Substitute.objects.create(
+            product_id=product, substitute_id=product_better)
         self.assertEquals(response.status_code, 200)
         delete_url = reverse('delete_favorate', kwargs={
-            'substitute_id': product})
+                             'pk': product_favorate.id})
         response = self.client.post(delete_url)
-        assert response.status_code == 200
-        self.assertTemplateUsed(response, 'substitute_confirm_delete')
+        self.assertEquals(response.status_code, 302)
+        self.assertRedirects(response, '/favorites_list/')
 
     def test_favorite_delete_unlogged(self):
         response = self.client.post('delete_favorate/19')

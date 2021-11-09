@@ -80,6 +80,7 @@ a:hover span, a:focus span{
     color: #dc3545;
     opacity: 0.7;
 }
+
 .product-img{
     height: 150px !important;
     width: 100% !important;
@@ -95,4 +96,13 @@ a:hover span, a:focus span{
     color: #f4623a;
     background-color: #f4623a26;
     border-color: #f4623a26;
+}
+.fa-arrow-down{
+    font-size: 2rem !important;
+    color: #f4623a;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: baseline;
 }

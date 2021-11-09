@@ -36,7 +36,7 @@
                          {% csrf_token %}
                          <input type="hidden" name="product_id" value="{{ product.id }}">
                          <input type="hidden" name="substitute_id" value="{{ substitute.id }}">
-                         <button type="submit" class="d-flex justify-content-center align-items-center btn btn-link btn-choice"
+                         <button type="submit" name="btn-favorate" class="d-flex justify-content-center align-items-center btn btn-link btn-choice"
                             data-bs-toggle="tooltip" data-bs-placement="bottom" >
                             <span>Enregistrer ce produit sain dans vos favoris</span>
                             <i class="bi bi-heart"></i>

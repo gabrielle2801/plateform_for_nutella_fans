@@ -29,6 +29,3 @@ class PurBeurreTest(StaticLiveServerTestCase):
         driver.find_element_by_id('id_username').send_keys('Xavier')
         driver.find_element_by_name('password').send_keys('gabi@1428')
         driver.find_element_by_class_name('account-btn').click()
-
-    def tearDown(self):
-        self.driver.close()

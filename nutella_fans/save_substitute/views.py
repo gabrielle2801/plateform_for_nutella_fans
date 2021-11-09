@@ -100,7 +100,7 @@ class FavoriteDeleteView(LoginRequiredMixin, DeleteView):
     """
 
     model = Substitute
-    # context_object_name = 'favorite_list'
+    context_object_name = 'favorite_list'
     template_name = 'substitute_confirm_delete.html'
 
     def post(self, request, *args, **kwargs):

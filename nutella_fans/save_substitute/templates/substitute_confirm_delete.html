@@ -7,7 +7,7 @@
     <form action="{% url 'delete_favorate' favorite_list.id%}" method="post">
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ favorite_list.substitute.name }}"?</p>
-        <input type="submit" value="Confirm" />
+        <input type="submit" name="Confirm_btn"  value="Confirm" />
     </form>
 
     {% endif %}

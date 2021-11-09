@@ -103,7 +103,6 @@ class SubstituteListTest(TestCase):
         product.categories.add(category)
         product_same_category.categories.add(category)
         product_other_category.categories.add(other_category)
-
         response = product.get_substitutes()
         assert product_same_category in response
         assert product_other_category not in response
