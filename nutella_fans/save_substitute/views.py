@@ -103,11 +103,16 @@ class FavoriteDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = 'favorite_list'
     template_name = 'substitute_confirm_delete.html'
 
-    def post(self, request, *args, **kwargs):
-        substitute_id = self.kwargs.get('fav.id')
-        delete = self.delete(request, Substitute.objects.filter(
-            substitute_id=substitute_id).delete())
-        return delete
+    def get_queryset(self):
+        """Query according to user's login id
+
+        Returns:
+            TYPE: Description
+        """
+
+        queryset = super().get_queryset()
+        user = self.request.user
+        return queryset.filter(user=user)
 
     def get_success_url(self):
         messages.success(self.request, 'Le substitut a bien été supprimé')
