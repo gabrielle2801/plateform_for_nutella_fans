@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from nutella_fans.product.models import Product, Brand
 from nutella_fans.save_substitute.models import Substitute
-from nutella_fans.save_substitute.views import FavorateList, SubtituteSaveView, FavoriteDeleteView
+from nutella_fans.save_substitute.views import FavorateList, SubtituteSaveView
 from nutella_fans.users_account.models import User
 
 
