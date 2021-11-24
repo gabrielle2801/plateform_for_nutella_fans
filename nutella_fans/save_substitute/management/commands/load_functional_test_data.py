@@ -8,11 +8,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         User.objects.filter(username='Gabrielle').delete()
-        # User.objects.all().delete()
+        User.objects.filter(username='Marcus').delete()
         u, created = User.objects.get_or_create(username="Gabrielle",
                                                 email="gabrielle@email.com", password='12@test@12')
         self.stdout.write(self.style.SUCCESS("User Create"))
-        Product.objects.all().delete()
         b, created = Brand.objects.get_or_create(name='ferrero')
         brand_p1 = b.id
 

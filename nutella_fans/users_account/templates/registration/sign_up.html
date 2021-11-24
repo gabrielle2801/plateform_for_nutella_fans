@@ -74,7 +74,7 @@
         <form method="POST">
           {% csrf_token %}
           {{ form.as_p }}
-          <button class="btn btn-primary account-btn" >Créer mon compte</button>
+          <button class="btn btn-primary account-btn" name="signup" >Créer mon compte</button>
         </form>
         <div class="further-instructions">
           <p class="text-body">Vous avez déja un compte ?</p>

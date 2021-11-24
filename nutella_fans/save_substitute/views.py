@@ -30,7 +30,7 @@ class FavorateList(ListView):
         """Query according to user's login id
 
         Returns:
-            TYPE: Description
+            TYPE: list of substitutes saved
         """
 
         queryset = super().get_queryset()
@@ -117,3 +117,6 @@ class FavoriteDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, 'Le substitut a bien été supprimé')
         return reverse_lazy('favorites_list')
+
+    def page_not_found_view(request):
+        return render(request, 'save_substitute/404.html')

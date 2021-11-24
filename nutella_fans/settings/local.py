@@ -8,3 +8,4 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 INSTALLED_APPS += ["debug_toolbar", ]
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
