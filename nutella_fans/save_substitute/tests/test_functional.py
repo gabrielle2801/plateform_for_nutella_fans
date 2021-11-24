@@ -66,11 +66,12 @@ class PurBeurreTest(StaticLiveServerTestCase):
         search_bar = self.driver.find_element_by_name("search_product")
         search_bar.send_keys("Nutella")
         search_bar.send_keys(Keys.RETURN)
+        time.sleep(5)
         substitute = self.driver.find_elements_by_xpath(
             "//i[@class='bi bi-search']")[0]
-        time.sleep(5)
         self.driver.implicitly_wait(5)
         substitute.click()
+        time.sleep(5)
         favorite = self.driver.find_elements_by_xpath(
             "//button[@name='btn-favorate']")[0]
         time.sleep(5)
