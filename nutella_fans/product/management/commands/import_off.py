@@ -1,4 +1,5 @@
 import requests
+from json import JSONDecodeError
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from nutella_fans.product.models import Category, Product, Brand, Store
@@ -62,11 +63,11 @@ class Command(BaseCommand):
         """
         self.stdout.write(self.style.WARNING(
             "Appel à l'api et récupération des 10 meilleurs catégories"))
-        response = requests.get("https://fr.openfoodfacts.org/categories.json")
+        response = requests.get("https://fr.openfoodfacts.org//products.json",headers={'Content-Type': 'application/json'})
         result_category = response.json()
-        data_category = result_category.get('tags')
-        categories = [data.get('name') for data in data_category
-                      if data.get("name")]
+        data_category = result_category.get('products')
+        categories = [data.get('categories') for data in data_category
+                      if data.get("categories")]
         category_name = categories[0:10]
         return category_name
 
@@ -92,7 +93,7 @@ class Command(BaseCommand):
             "page_size": settings.MAX_IMPORT_PRODUCTS,
             "json": 1}
         response_product = requests.get(
-            "https://fr.openfoodfacts.org/cgi/search.pl?", query)
+            "https://world.openfoodfacts.net/api/v2/search?", query)
         result_product = response_product.json()
         return result_product["products"]
 

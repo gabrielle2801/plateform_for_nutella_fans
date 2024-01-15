@@ -70,11 +70,11 @@ class Product(models.Model):
         url (TYPE): url of product in OFF web site
     """
 
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=255)
     nutriscore = models.CharField(max_length=1, null=True)
     nova = models.IntegerField(null=True)
-    url = models.URLField(max_length=200)
-    barcode = models.CharField(max_length=200, unique=True)
+    url = models.URLField(max_length=255)
+    barcode = models.CharField(max_length=255, unique=True)
     description = models.TextField(null=True)
     picture = models.URLField(null=True)
     fat_100g = models.FloatField(null=True)
